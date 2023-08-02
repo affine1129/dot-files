@@ -40,8 +40,8 @@ keymap("n", "<C-h>", "<C-w>h", opts)
 -- indent
 keymap("n", "<Tab>", ">>", opts)
 keymap("n", "<S-Tab>", "<<", opts)
-keymap("v", "<Tab>", ">>", opts)
-keymap("v", "<S-Tab>", "<<", opts)
+keymap("v", "<Tab>", ">", opts)
+keymap("v", "<S-Tab>", "<", opts)
 
 -- jump command
 keymap("n", "<C-i>", "<C-I>", opts)
