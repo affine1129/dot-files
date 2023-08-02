@@ -1,0 +1,9 @@
+.zprofile_work
+.DS_Store
+raycast/
+iterm2/
+fish/
+configstore/
+karabiner/assets/
+karabiner/automatic_backups/
+coc/

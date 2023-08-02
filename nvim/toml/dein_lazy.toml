@@ -1,0 +1,7 @@
+[[plugins]]
+repo = 'nvie/vim-flake8'
+on_ft = ['python3']
+
+[[plugins]]
+repo = 'tell-k/vim-autopep8'
+on_ft = ['python3']

@@ -1,0 +1,8 @@
+require("base")
+require("autocmds")
+require("options")
+require("keymaps")
+require("plugins/install")
+require("plugins/coc")
+require("plugins/fern")
+require("colorscheme")

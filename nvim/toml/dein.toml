@@ -1,0 +1,228 @@
+[[plugins]]
+repo = 'sainnhe/everforest'
+
+[[plugins]]
+repo = 'nvim-lualine/lualine.nvim'
+depends = ['nvim-tree/nvim-web-devicons']
+lua_add = '''
+require('lualine').setup {
+  options = {
+    theme = 'everforest'
+  }
+}
+'''
+
+[[plugins]]
+repo = 'p00f/nvim-ts-rainbow'
+depends = ['nvim-treesitter/nvim-treesitter']
+
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+lua_add = '''
+require("nvim-treesitter.configs").setup {
+  ensure_installed = {"toml", "python", "typescript", "html", "markdown"},
+  auto_install = true,
+  sync_install = false,
+  highlight = {
+    enable = true,
+  },
+  rainbow = {
+    enable = true,
+    extended_mode = true,
+    max_file_lines = nil,
+    colors = {
+      "#f6dcbc",
+      "#bcf6bf",
+      "#bcf3f6",
+      "#bfbcf6",
+      "#f6bcf6",
+    }
+  }
+}
+'''
+
+[[plugins]]
+repo = 'nvim-tree/nvim-web-devicons'
+
+[[plugins]]
+repo = 'akinsho/bufferline.nvim'
+lua_add = '''
+vim.opt.termguicolors = true
+require("bufferline").setup{
+  options = {
+    mode = "tabs",
+    color_icons = true
+  }
+}
+'''
+
+[[plugins]]
+repo = 'akinsho/toggleterm.nvim'
+lua_add = '''
+local status, toggleterm = pcall(require, "toggleterm")
+if not status then
+  return
+end
+
+toggleterm.setup({
+  open_mapping = [[<C-t>]],
+  hide_numbers = true,
+  direction = "float",
+  shell = vim.o.shell,
+  size = 15
+})
+
+function _G.set_terminal_keymaps()
+  local opts = { buffer = 0 }
+  vim.keymap.set('t', '<C-j><C-j>', [[<C-\><C-n>]], opts)
+  vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
+end
+vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+
+local Terminal = require("toggleterm.terminal").Terminal
+
+local lazygit = Terminal:new({
+	cmd = "lazygit",
+	direction = "float",
+	hidden = true
+})
+function _lazygit_toggle()
+	lazygit:toggle()
+end
+vim.api.nvim_set_keymap("n", "<C-g>", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("t", "<C-g>", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
+
+local python = Terminal:new({ cmd = "python3", direction = "float", hidden = true })
+function _python_toggle()
+ python:toggle()
+end
+vim.api.nvim_set_keymap("n", "<C-y>", "<cmd>lua _python_toggle()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("t", "<C-y>", "<cmd>lua _python_toggle()<CR>", { noremap = true, silent = true })
+'''
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = '''
+"" git操作
+
+" g]で前の変更箇所へ移動する
+nnoremap g[ :GitGutterPrevHunk<CR>
+" g[で次の変更箇所へ移動する
+nnoremap g] :GitGutterNextHunk<CR>
+
+" ghでdiffをハイライトする
+nnoremap gh :GitGutterLineHighlightsToggle<CR>
+" gpでカーソル行のdiffを表示する
+nnoremap gp :GitGutterPreviewHunk<CR>
+
+" 記号の色を変更する
+highlight GitGutterAdd ctermfg=green
+highlight GitGutterChange ctermfg=blue
+highlight GitGutterDelete ctermfg=red
+
+"" 反映時間を短くする(デフォルトは4000ms)
+set updatetime=250
+'''
+
+[[plugins]]
+repo = 'APZelos/blamer.nvim'
+hook_add = '''
+let g:blamer_enabled=1
+let g:blamer_show_in_visual_modes=0
+let g:blamer_show_in_insert_modes=0
+let g:blamer_delay = 500
+'''
+
+[[plugins]]
+repo = 'jacoborus/tender.vim'
+
+[[plugins]]
+repo = 'thinca/vim-visualstar'
+
+[[plugins]]
+repo = 'preservim/nerdcommenter'
+hook_add = '''
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+nnoremap <leader>cc <plug>NERDCommenterToggle 
+vnoremap <leader>cc <plug>NERDCommenterToggle 
+nnoremap <leader>c<space> <plug>NERDCommenterComment
+vnoremap <leader>c<space> <plug>NERDCommenterComment
+'''
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+hook_add = '''
+let g:netrw_nogx = 1 " disable netrw's gx mapping.
+nnoremap gx <Plug>(openbrowser-smart-search)
+'''
+
+[[plugins]]
+repo = "neoclide/coc.nvim"
+merge = 0
+rev = "release"
+on_ft = ['python']
+
+[[plugins]]
+repo = 'lambdalisue/fern.vim'
+hook_add = '''
+'''
+
+[[plugins]]
+repo = 'yuki-yano/fern-preview.vim'
+depends = ['lambdalisue/fern.vim']
+hood_add = '''
+'''
+
+[[plugins]]
+repo = 'lambdalisue/fern-git-status.vim'
+depends = ['lambdalisue/fern.vim']
+
+[[plugins]]
+repo = 'lambdalisue/fern-bookmark.vim'
+hook_add = '''
+'''
+
+[[plugins]]
+repo = 'lambdalisue/nerdfont.vim'
+
+[[plugins]]
+repo = 'lambdalisue/fern-renderer-nerdfont.vim'
+hook_add = '''
+  let g:fern#renderer = 'nerdfont'
+'''
+
+[[plugins]]
+repo = 'lambdalisue/glyph-palette.vim'
+hook_add = '''
+  augroup my-glyph-palette
+    autocmd! *
+    autocmd FileType fern call glyph_palette#apply()
+  augroup END
+'''
+
+[[plugins]]
+repo = 'vimtry1/today.vim'
+
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --all'
+hook_add = '''
+fun! FzfOmniFiles()
+  let is_git = system('git status')
+  if v:shell_error
+    :Files
+  else
+    :GFiles
+  endif
+endfun
+nnoremap <C-f> :call FzfOmniFiles()<CR>
+nnoremap <Space>f :Rg<CR>
+'''
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+# depends = ['fzf']

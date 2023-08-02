@@ -1,0 +1,61 @@
+# Itermの見た目設定
+PROMPT='%F{cyan}%D%f %F{cyan}%T%f %F{magenta}%c%f %F{blue}$%f '
+autoload -U colors ; colors ; zstyle ':completion:*' list-colors "${LS_COLORS}"
+
+# 環境変数の設定
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/shims:$PATH"
+eval "$(pyenv init -)"
+
+# nvmの設定
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+if which pyenv-virtualenv-init > /dev/null; 
+then 
+  eval "$(pyenv virtualenv-init -)"; 
+fi
+
+# オプション設定
+setopt auto_cd
+autoload -U zmv
+
+# 削除用コマンド
+if type trash-put &> /dev/null
+then
+    alias rm=trash-put
+fi
+
+# 省略用コマンド
+alias ...='cd ../../../'
+alias ..='cd ../../'
+alias .='cd ../'
+
+alias n=nvim
+alias ls='ls -G'
+
+# 設定ファイル用コマンド
+alias re='source ~/.zshrc'
+alias mk_zsh='nvim ~/.zshrc'
+alias mk_alias='nvim ~/.config/zsh/.zprofile'
+alias mk_n='nvim ~/.config/nvim/init.vim'
+alias karabiner="nvim ~/.config/karabiner/karabiner.json"
+
+# Open Command
+alias uuid="uuidgen | tr '[:upper:]' '[:lower:]'"
+function yahoo(){
+	lynx "https://search.yahoo.co.jp/search?p=$1 $2 $3 $4 $5"
+}
+function zoom(){
+	open "zoommtg://zoom.us/join?confno=$1?pwd=$2"
+}
+function tonvim(){
+	TOVIMTMP=~/.tonvim_tmp_`date +%Y-%m-%d_%H-%M-%S.txt`
+	cat > $TOVIMTMP 
+	nvim $TOVIMTMP < /dev/tty > /dev/tty
+	cat $TOVIMTMP 
+	rm $TOVIMTMP 
+}
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
