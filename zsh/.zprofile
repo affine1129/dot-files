@@ -5,7 +5,7 @@ autoload -U colors ; colors ; zstyle ':completion:*' list-colors "${LS_COLORS}"
 # 環境変数の設定
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/shims:$PATH"
-eval "$(pyenv init -)"
+# eval "$(pyenv init -)"
 
 # nvmの設定
 export NVM_DIR="$HOME/.nvm"
@@ -20,6 +20,7 @@ fi
 # オプション設定
 setopt auto_cd
 autoload -U zmv
+set -o vi
 
 # 削除用コマンド
 if type trash-put &> /dev/null
