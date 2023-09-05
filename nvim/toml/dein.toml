@@ -92,12 +92,6 @@ end
 vim.api.nvim_set_keymap("n", "<C-g>", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("t", "<C-g>", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
 
-local python = Terminal:new({ cmd = "python3", direction = "float", hidden = true })
-function _python_toggle()
- python:toggle()
-end
-vim.api.nvim_set_keymap("n", "<C-y>", "<cmd>lua _python_toggle()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("t", "<C-y>", "<cmd>lua _python_toggle()<CR>", { noremap = true, silent = true })
 '''
 
 [[plugins]]
