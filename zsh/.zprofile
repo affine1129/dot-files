@@ -1,11 +1,12 @@
 # Itermの見た目設定
-PROMPT='%F{cyan}%D%f %F{cyan}%T%f %F{magenta}%c%f %F{blue}$%f '
-autoload -U colors ; colors ; zstyle ':completion:*' list-colors "${LS_COLORS}"
+PROMPT='%F{green}%D%f %F{green}%T%f %F{magenta}%c%f %F{green}$%f '
 
 # 環境変数の設定
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/shims:$PATH"
-# eval "$(pyenv init -)"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
 
 # nvmの設定
 export NVM_DIR="$HOME/.nvm"

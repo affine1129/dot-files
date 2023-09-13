@@ -170,6 +170,8 @@ let g:NERDSpaceDelims = 1
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
+let g:NERDDefaultAlign='left'
+
 nnoremap <leader>cc <plug>NERDCommenterToggle 
 vnoremap <leader>cc <plug>NERDCommenterToggle 
 nnoremap <leader>c<space> <plug>NERDCommenterComment
