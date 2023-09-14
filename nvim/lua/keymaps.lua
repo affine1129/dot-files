@@ -64,3 +64,6 @@ keymap("n", "<S-Down>", "<C-x>", opts)
 -- tab
 keymap("n", "<C-[>", "gT", opts)
 keymap("n", "<C-]>", "gt", opts)
+
+-- disable <ESC>
+keymap("n", "<ESC>", "", opts)

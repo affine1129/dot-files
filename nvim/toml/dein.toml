@@ -245,7 +245,7 @@ fun! FzfOmniFiles()
   endif
 endfun
 nnoremap <C-f> :call FzfOmniFiles()<CR>
-nnoremap <Space>f :Rg<CR>
+nnoremap <C-S-f> :Rg<CR>
 '''
 
 [[plugins]]
