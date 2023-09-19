@@ -94,7 +94,7 @@ if not status then
 end
 
 toggleterm.setup({
-  open_mapping = [[<C-t>]],
+  open_mapping = [[<Space>t]],
   hide_numbers = true,
   direction = "float",
   shell = vim.o.shell,
@@ -118,8 +118,19 @@ local lazygit = Terminal:new({
 function _lazygit_toggle()
 	lazygit:toggle()
 end
-vim.api.nvim_set_keymap("n", "<C-g>", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("t", "<C-g>", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Space>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("t", "<Space>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
+
+local lazydocker = Terminal:new({
+	cmd = "lazydocker",
+	direction = "float",
+	hidden = true
+})
+function _lazydocker_toggle()
+	lazydocker:toggle()
+end
+vim.api.nvim_set_keymap("n", "<Space>d", "<cmd>lua _lazydocker_toggle()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("t", "<Space>d", "<cmd>lua _lazydocker_toggle()<CR>", { noremap = true, silent = true })
 
 '''
 
