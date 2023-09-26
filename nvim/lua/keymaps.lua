@@ -67,3 +67,7 @@ keymap("n", "<C-]>", "gt", opts)
 
 -- disable <ESC>
 keymap("n", "<ESC>", "", opts)
+
+-- split window
+keymap("n", "ss", ":split<Return><C-w>w", opts)
+keymap("n", "sv", ":vsplit<Return><C-w>w", opts)

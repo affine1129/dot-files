@@ -248,21 +248,27 @@ hook_add = '''
 repo = 'vimtry1/today.vim'
 
 [[plugins]]
-repo = 'junegunn/fzf'
-build = './install --all'
-hook_add = '''
-fun! FzfOmniFiles()
-  let is_git = system('git status')
-  if v:shell_error
-    :Files
-  else
-    :GFiles
-  endif
-endfun
-nnoremap <C-f> :call FzfOmniFiles()<CR>
-nnoremap <C-S-f> :Rg<CR>
+repo = 'nvim-lua/plenary.nvim'
+
+[[plugins]]
+# https://github.com/nvim-telescope/telescope.nvim
+repo = 'nvim-telescope/telescope.nvim'
+lua_add = '''
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', 'ff', builtin.find_files, {})
+vim.keymap.set('n', 'fg', builtin.git_files, {})
+vim.keymap.set('n', 'fp', builtin.live_grep, {})
+vim.keymap.set('n', 'fb', builtin.buffers, {})
+vim.keymap.set('n', 'fh', builtin.help_tags, {})
 '''
 
 [[plugins]]
-repo = 'junegunn/fzf.vim'
-# depends = ['fzf']
+# https://github.com/lukas-reineke/indent-blankline.nvim
+repo = 'lukas-reineke/indent-blankline.nvim'
+lua_add = '''
+require("indent_blankline").setup {
+space_char_blankline = " ",
+show_current_context = true,
+show_current_context_start = true,
+}
+'''
