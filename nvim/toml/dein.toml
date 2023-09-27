@@ -113,25 +113,25 @@ vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 local Terminal = require("toggleterm.terminal").Terminal
 
 local lazygit = Terminal:new({
-	cmd = "lazygit",
-	direction = "float",
-	hidden = true,
+  cmd = "lazygit",
+  direction = "float",
+  hidden = true,
   count = 6
 })
 function _lazygit_toggle()
-	lazygit:toggle()
+  lazygit:toggle()
 end
 vim.api.nvim_set_keymap("n", "<C-S-g>", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("t", "<C-S-g>", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
 
 local lazydocker = Terminal:new({
-	cmd = "lazydocker",
-	direction = "float",
-	hidden = true,
+  cmd = "lazydocker",
+  direction = "float",
+  hidden = true,
   count = 7
 })
 function _lazydocker_toggle()
-	lazydocker:toggle()
+  lazydocker:toggle()
 end
 vim.api.nvim_set_keymap("n", "<C-S-d>", "<cmd>lua _lazydocker_toggle()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("t", "<C-S-d>", "<cmd>lua _lazydocker_toggle()<CR>", { noremap = true, silent = true })
@@ -232,16 +232,16 @@ repo = 'lambdalisue/nerdfont.vim'
 [[plugins]]
 repo = 'lambdalisue/fern-renderer-nerdfont.vim'
 hook_add = '''
-  let g:fern#renderer = 'nerdfont'
+let g:fern#renderer = 'nerdfont'
 '''
 
 [[plugins]]
 repo = 'lambdalisue/glyph-palette.vim'
 hook_add = '''
-  augroup my-glyph-palette
-    autocmd! *
-    autocmd FileType fern call glyph_palette#apply()
-  augroup END
+augroup my-glyph-palette
+  autocmd! *
+  autocmd FileType fern call glyph_palette#apply()
+augroup END
 '''
 
 [[plugins]]
@@ -267,9 +267,9 @@ vim.keymap.set('n', 'fh', builtin.help_tags, {})
 repo = 'lukas-reineke/indent-blankline.nvim'
 lua_add = '''
 require("indent_blankline").setup {
-space_char_blankline = " ",
-show_current_context = true,
-show_current_context_start = true,
+  space_char_blankline = " ",
+  show_current_context = true,
+  show_current_context_start = true,
 }
 '''
 
