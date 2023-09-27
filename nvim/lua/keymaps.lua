@@ -51,7 +51,7 @@ keymap("n", "<C-o>", "<C-O>", opts)
 keymap("n", "<S-b>", "w", opts)
 
 -- select all
-keymap("n", "<C-a>", "gg<S-v>G", opts)
+keymap("n", "<C-S-a>", "gg<S-v>G", opts)
 
 -- save command
 keymap("n", "<Space><Space>", ":w<CR>", opts)
