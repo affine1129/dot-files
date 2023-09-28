@@ -341,8 +341,8 @@ require("dial.config").augends:register_group{
 '''
 
 [[plugins]]
-# https://github.com/kyledhui/nvim-surround
-repo = 'kyledhui/nvim-surround'
+# https://github.com/kylechui/nvim-surround
+repo = 'kylechui/nvim-surround'
 lua_add = '''
-require("nvim-surround").setup()
+require("nvim-surround").setup({})
 '''
