@@ -33,8 +33,8 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "<C-h>", "<C-w>h", opts)
 
 -- adjust a window size
--- keymap("n", ">", "<C-w>>", opts)
--- keymap("n", "<", "<C-w><", opts)
+keymap("n", ">", "<C-w>>", opts)
+keymap("n", "<", "<C-w><", opts)
 
 
 -- indent
@@ -64,6 +64,8 @@ keymap("n", "<S-Down>", "<C-x>", opts)
 -- tab
 keymap("n", "<C-[>", "gT", opts)
 keymap("n", "<C-]>", "gt", opts)
+keymap("n", "<C-w>", ":tabclose<CR>", opts)
+keymap("n", "<C-t>", ":tabnew<CR>", opts)
 
 -- disable <ESC>
 keymap("n", "<ESC>", "", opts)
