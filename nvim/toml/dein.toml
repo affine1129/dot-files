@@ -94,7 +94,7 @@ if not status then
 end
 
 toggleterm.setup({
-  open_mapping = [[<C-t>]],
+  open_mapping = [[<C-z>]],
   hide_numbers = true,
   direction = "horizontal",
   shell = vim.o.shell,
