@@ -383,3 +383,7 @@ require("noice").setup({
   },
 })
 '''
+
+[[plugins]]
+# https://github.com/MattesGroeger/vim-bookmarks
+repo = 'MattesGroeger/vim-bookmarks'
