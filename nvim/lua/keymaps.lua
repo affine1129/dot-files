@@ -48,7 +48,7 @@ keymap("n", "<C-i>", "<C-I>", opts)
 keymap("n", "<C-o>", "<C-O>", opts)
 
 -- move to next word
-keymap("n", "<S-b>", "w", opts)
+-- keymap("n", "<S-b>", "w", opts)
 
 -- select all
 keymap("n", "<C-S-a>", "gg<S-v>G", opts)
@@ -64,8 +64,8 @@ keymap("n", "<S-Down>", "<C-x>", opts)
 -- tab
 keymap("n", "<C-[>", "gT", opts)
 keymap("n", "<C-]>", "gt", opts)
-keymap("n", "<C-w>", ":tabclose<CR>", opts)
-keymap("n", "<C-t>", ":tabnew<CR>", opts)
+keymap("n", "<C-w><C-w>", ":tabclose<CR>", opts)
+keymap("n", "<C-t>", ":tabnew<CR>:Fern bookmark:///<CR>", opts)
 
 -- disable <ESC>
 keymap("n", "<ESC>", "", opts)
