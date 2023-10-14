@@ -2,6 +2,9 @@
 repo = 'sainnhe/everforest'
 
 [[plugins]]
+repo = 'folke/tokyonight.nvim'
+
+[[plugins]]
 repo = 'nvim-lualine/lualine.nvim'
 depends = ['nvim-tree/nvim-web-devicons']
 lua_add = '''
@@ -277,17 +280,43 @@ vim.keymap.set('n', '<C-f><C-g>', builtin.git_files, {})
 vim.keymap.set('n', '<C-f><C-p>', builtin.live_grep, {})
 vim.keymap.set('n', '<C-f><C-b>', builtin.buffers, {})
 vim.keymap.set('n', '<C-f><C-h>', builtin.help_tags, {})
+vim.keymap.set('n', '<C-f><C-s>', builtin.colorscheme, {})
 '''
 
 [[plugins]]
 # https://github.com/lukas-reineke/indent-blankline.nvim
 repo = 'lukas-reineke/indent-blankline.nvim'
+branch = 'ibl'
 lua_add = '''
-require("indent_blankline").setup {
-  space_char_blankline = " ",
-  show_current_context = true,
-  show_current_context_start = true,
+-- require("ibl").setup {
+--   space_char_blankline = " ",
+--   show_current_context = true,
+--   show_current_context_start = true,
+-- }
+local highlight = {
+    "RainbowRed",
+    "RainbowYellow",
+    "RainbowBlue",
+    "RainbowOrange",
+    "RainbowGreen",
+    "RainbowViolet",
+    "RainbowCyan",
 }
+
+local hooks = require "ibl.hooks"
+-- create the highlight groups in the highlight setup hook, so they are reset
+-- every time the colorscheme changes
+hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+    vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
+    vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
+    vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
+    vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
+    vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
+    vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
+    vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
+end)
+
+require("ibl").setup { indent = { highlight = highlight } }
 '''
 
 [[plugins]]
@@ -404,3 +433,22 @@ require("noice").setup({
 [[plugins]]
 # https://github.com/MattesGroeger/vim-bookmarks
 repo = 'MattesGroeger/vim-bookmarks'
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+hook_add = '''
+let g:vim_markdown_folding_disabled = 0
+let g:vim_markdown_folding_style_pythonic = 1
+let g:vim_markdown_no_extensions_in_markdown = 1
+
+map <Plug> <Plug>Markdown_OpenUrlUnderCursor
+'''
+
+[[plugins]]
+repo = 'jkramer/vim-checkbox'
+
+[[plugins]]
+repo = 'previm/previm'
+hook_add = '''
+nnoremap <C-p> :PrevimOpen<CR>
+'''

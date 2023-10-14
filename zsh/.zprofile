@@ -45,6 +45,9 @@ alias mk_alias='nvim ~/.config/zsh/.zprofile'
 alias mk_n='nvim ~/.config/nvim/init.vim'
 alias karabiner="nvim ~/.config/karabiner/karabiner.json"
 
+# 移動コマンド
+alias cd_notion='cd "/Users/ittokuryota/Library/Mobile Documents/iCloud~com~omz-software~Pythonista3/Documents/damp-escarpment-64145"'
+
 # Open Command
 alias uuid="uuidgen | tr '[:upper:]' '[:lower:]'"
 function yahoo(){
@@ -61,3 +64,10 @@ function tonvim(){
 	rm $TOVIMTMP 
 }
 
+function slogs(){
+        awslogs get /aws/lambda/sync-notion-automator --watch
+}
+
+function aslogs(){
+        awslogs get /aws/lambda/async-notion-automator --watch
+}
