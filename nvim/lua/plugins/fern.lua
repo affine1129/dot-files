@@ -14,6 +14,7 @@ function fern_settings()
   vim.api.nvim_buf_set_keymap(0, "n", "<C-k>", "<C-w>k", opts)
   vim.api.nvim_buf_set_keymap(0, "n", "<C-l>", "<C-w>l", opts)
   vim.api.nvim_buf_set_keymap(0, "n", "<C-h>", "<C-w>h", opts)
+  vim.api.nvim_buf_set_keymap(0, "n", "g", "<Plug>(fern-action-cd:cursor)", opts)
 end
 
 vim.api.nvim_exec([[
