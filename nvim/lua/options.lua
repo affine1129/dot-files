@@ -29,7 +29,7 @@ local options = {
 	termguicolors = true,
 
 	-- change dir
-  autochdir = true,
+  -- autochdir = true,
 
 	-- indent setting
 	expandtab = true,

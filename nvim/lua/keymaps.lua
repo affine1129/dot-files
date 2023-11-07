@@ -43,12 +43,15 @@ keymap("n", "<S-Tab>", "<<", opts)
 keymap("v", "<Tab>", ">gv", opts)
 keymap("v", "<S-Tab>", "<gv", opts)
 
+-- move command
+keymap("n", "j", "gj", opts)
+keymap("v", "j", "gj", opts)
+keymap("n", "k", "gk", opts)
+keymap("v", "k", "gk", opts)
+
 -- jump command
 keymap("n", "<C-i>", "<C-I>", opts)
 keymap("n", "<C-o>", "<C-O>", opts)
-
--- move to next word
--- keymap("n", "<S-b>", "w", opts)
 
 -- select all
 keymap("n", "<C-S-a>", "gg<S-v>G", opts)
