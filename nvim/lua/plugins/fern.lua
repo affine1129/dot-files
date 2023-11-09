@@ -1,7 +1,7 @@
 vim.g["fern#default_hidden"] = 1
 vim.g["fern#opener"] = "edit"
 
-vim.api.nvim_set_keymap("n", "<C-n>", ":Fern . -drawer -reveal=% -toggle -width=30<CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", "<C-n>", ":Fern . -drawer -reveal=% -toggle -width=45<CR>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<C-S-n>", ":Fern . -reveal=% <CR>", {noremap = true})
 
 function fern_settings()

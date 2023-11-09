@@ -304,6 +304,7 @@ local highlight = {
 }
 
 local hooks = require "ibl.hooks"
+
 -- create the highlight groups in the highlight setup hook, so they are reset
 -- every time the colorscheme changes
 hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
@@ -403,15 +404,53 @@ lua_add = '''
 '''
 
 [[plugins]]
-# folke/noice.nvim
+# https://github.com/rcarriga/nvim-notify
+repo = 'rcarriga/nvim-notify' 
+lua_add = '''
+'''
+
+[[plugins]]
+# https://github.com/folke/noice.nvim
+# https://dev.classmethod.jp/articles/eetann-noice-nvim-beginner/
 repo = 'folke/noice.nvim'
-depends = ['MunifTanjim/nui.nvim']
+depends = ['MunifTanjim/nui.nvim', 'rcarriga/nvim-notify']
 lua_add = '''
 require("noice").setup({
+  cmdline = {
+    format = {
+      search_down = { icon = "🔍DOWN" },
+      search_up = { icon = "🔍UP" },
+    },
+  },
   views = {
     cmdline_popup = {
-      position = "50%",
-    }
+      position = {
+        row = 30,
+        col = "50%",
+      },
+      size = {
+        width = 60,
+        height = "auto",
+      },
+    },
+    popupmenu = {
+      relative = "editor",
+      position = {
+        row = 33,
+        col = "50%",
+      },
+      size = {
+        width = 60,
+        height = 10,
+      },
+      border = {
+        style = "rounded",
+        padding = { 0, 1 },
+      },
+      win_options = {
+        winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
+      },
+    },
   },
   lsp = {
     -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -423,11 +462,11 @@ require("noice").setup({
   },
   -- you can enable a preset for easier configuration
   presets = {
-    bottom_search = true, -- use a classic bottom cmdline for search
-    command_palette = true, -- position the cmdline and popupmenu together
+    bottom_search = false, -- use a classic bottom cmdline for search
+    command_palette = false, -- position the cmdline and popupmenu together
     long_message_to_split = true, -- long messages will be sent to a split
-    inc_rename = false, -- enables an input dialog for inc-rename.nvim
-    lsp_doc_border = false, -- add a border to hover docs and signature help
+    inc_rename = true, -- enables an input dialog for inc-rename.nvim
+    lsp_doc_border = true, -- add a border to hover docs and signature help
   },
 })
 '''
@@ -453,4 +492,31 @@ repo = 'jkramer/vim-checkbox'
 repo = 'previm/previm'
 hook_add = '''
 nnoremap <C-p> :PrevimOpen<CR>
+'''
+
+[[plugins]]
+# https://github.com/Equilibris/nx.nvim
+repo = 'Equilibris/nx.nvim'
+lua_add = '''
+require('nx').setup({
+  nx_cmd_root = 'pnpm nx',
+})
+require('nx.generators')
+
+vim.keymap.set("n", "<C-f><C-r>", function()
+  require('nx.read-configs').read_nx_root(function() end)
+end)
+vim.keymap.set("n", "<C-f><C-n>", function()
+  require('nx.generators').generators()
+end)
+vim.keymap.set("n", "<C-f><C-a>", function()
+  require('nx.on-project-mod')()
+  require('nx.actions').actions_finder()
+end)
+'''
+
+[[plugins]]
+# https://github.com/hrsh7th/nvim-cmp
+repo = 'hrsh7th/nvim-cmp'
+lua_add = '''
 '''
