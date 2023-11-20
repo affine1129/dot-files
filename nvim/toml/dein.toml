@@ -231,12 +231,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'yuki-yano/fern-preview.vim'
-depends = ['lambdalisue/fern.vim']
-hood_add = '''
-'''
-
-[[plugins]]
 repo = 'lambdalisue/fern-git-status.vim'
 depends = ['lambdalisue/fern.vim']
 
@@ -276,7 +270,6 @@ repo = 'nvim-telescope/telescope.nvim'
 lua_add = '''
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<C-f><C-f>', builtin.find_files, {})
-vim.keymap.set('n', '<C-f><C-g>', builtin.git_files, {})
 vim.keymap.set('n', '<C-f><C-p>', builtin.live_grep, {})
 vim.keymap.set('n', '<C-f><C-b>', builtin.buffers, {})
 vim.keymap.set('n', '<C-f><C-h>', builtin.help_tags, {})

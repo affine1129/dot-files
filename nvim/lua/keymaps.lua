@@ -57,8 +57,9 @@ keymap("n", "<C-o>", "<C-O>", opts)
 keymap("n", "<C-S-a>", "gg<S-v>G", opts)
 
 -- save command
-keymap("n", "<Space><Space>", ":w<CR>", opts)
-keymap("n", "<Space><Space><Enter>", ":wq<CR>", opts)
+keymap("n", "<leader>q", ":q<CR>", opts)
+keymap("n", "<leader>w", ":w<CR>", opts)
+keymap("n", "<leader><Enter>", ":wq<CR>", opts)
 
 -- incremant, decremant
 keymap("n", "<S-Up>", "<C-a>", opts)

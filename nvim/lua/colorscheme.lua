@@ -2,5 +2,5 @@
 
 vim.cmd [[
 set background=dark
-colorscheme tokyonight-storm
+colorscheme everforest
 ]]
