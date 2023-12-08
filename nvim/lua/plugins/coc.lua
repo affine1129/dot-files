@@ -54,8 +54,10 @@ keyset("n", "]g", "<Plug>(coc-diagnostic-next)", { silent = true })
 -- GoTo code navigation
 keyset("n", "gd", "<Plug>(coc-definition)", { silent = true })
 keyset("n", "gy", "<Plug>(coc-type-definition)", { silent = true })
-keyset("n", "gi", "<Plug>(coc-implementation)", { silent = true })
-keyset("n", "gr", "<Plug>(coc-references)", { silent = true })
+-- keyset("n", "gi", "<Plug>(coc-implementation)", { silent = true })
+keyset("n", "gi", ":Telescope coc implementations<CR>", { silent = true })
+-- keyset("n", "gr", "<Plug>(coc-references)", { silent = true })
+keyset("n", "gr", ":Telescope coc references<CR>", { silent = true })
 
 
 -- Use K to show documentation in preview window
@@ -178,15 +180,19 @@ vim.opt.statusline:prepend("%{coc#status()}%{get(b:,'coc_current_function','')}"
 ---@diagnostic disable-next-line: redefined-local
 local opts = { silent = true, nowait = true }
 -- Show all diagnostics
-keyset("n", "<space>a", ":<C-u>CocList diagnostics<cr>", opts)
+-- keyset("n", "<space>a", ":<C-u>CocList diagnostics<cr>", opts)
+keyset("n", "<space>a", ":Telescope coc diagnostics<cr>", opts)
+keyset("n", "<space><S-a>", ":Telescope coc workspace_diagnostics<cr>", opts)
 -- Manage extensions
 keyset("n", "<space>e", ":<C-u>CocList extensions<cr>", opts)
 -- Show commands
 -- keyset("n", "<space>c", ":<C-u>CocList commands<cr>", opts)
 -- Find symbol of current document
-keyset("n", "<space>o", ":<C-u>CocList outline<cr>", opts)
+-- keyset("n", "<space>o", ":<C-u>CocList outline<cr>", opts)
+keyset("n", "<space>o", ":Telescope coc document_symbols<cr>", opts)
 -- Search workspace symbols
-keyset("n", "<space>s", ":<C-u>CocList -I symbols<cr>", opts)
+-- keyset("n", "<space>s", ":<C-u>CocList -I symbols<cr>", opts)
+keyset("n", "<space>s", ":Telescope coc workspace_symbols<cr>", opts)
 -- Do default action for next item
 keyset("n", "<space>j", ":<C-u>CocNext<cr>", opts)
 -- Do default action for previous item

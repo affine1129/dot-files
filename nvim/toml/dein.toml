@@ -220,10 +220,15 @@ nnoremap gx <Plug>(openbrowser-smart-search)
 '''
 
 [[plugins]]
-repo = "neoclide/coc.nvim"
+repo = 'neoclide/coc.nvim'
 merge = 0
-rev = "release"
+rev = 'release'
 on_ft = ['python']
+
+[[plugins]]
+repo = 'fannheyward/telescope-coc.nvim'
+lua_add = '''
+'''
 
 [[plugins]]
 repo = 'lambdalisue/fern.vim'
@@ -274,6 +279,17 @@ vim.keymap.set('n', '<C-f><C-p>', builtin.live_grep, {})
 vim.keymap.set('n', '<C-f><C-b>', builtin.buffers, {})
 vim.keymap.set('n', '<C-f><C-h>', builtin.help_tags, {})
 vim.keymap.set('n', '<C-f><C-s>', builtin.colorscheme, {})
+
+telescope = require("telescope").setup({
+  extensions = {
+    coc = {
+        theme = 'ivy',
+        prefer_locations = true, -- always use Telescope locations to preview definitions/declarations/implementations etc
+    }
+  },
+})
+require('telescope').load_extension('coc')
+require('telescope').load_extension('workspaces')
 '''
 
 [[plugins]]
@@ -403,6 +419,13 @@ lua_add = '''
 '''
 
 [[plugins]]
+# https://github.com/folke/zen-mode.nvim
+repo = 'folke/zen-mode.nvim'
+lua_add = '''
+vim.keymap.set("n", "<Space>z", ":ZenMode<CR>")
+'''
+
+[[plugins]]
 # https://github.com/folke/noice.nvim
 # https://dev.classmethod.jp/articles/eetann-noice-nvim-beginner/
 repo = 'folke/noice.nvim'
@@ -522,4 +545,42 @@ end)
 # https://github.com/hrsh7th/nvim-cmp
 repo = 'hrsh7th/nvim-cmp'
 lua_add = '''
+'''
+
+[[plugins]]
+# https://github.com/karb94/neoscroll.nvim
+repo = 'karb94/neoscroll.nvim'
+lua_add = '''
+require('neoscroll').setup()
+'''
+
+[[plugins]]
+# https://github.com/natecraddock/workspaces.nvim
+repo = 'natecraddock/workspaces.nvim'
+lua_add = '''
+'''
+
+[[plugins]]
+# https://github.com/natecraddock/sessions.nvim
+repo = 'natecraddock/sessions.nvim'
+depends = ['natecraddock/workspaces.nvim', 'nvim-telescope/telescope.nvim']
+lua_add = '''
+require("workspaces").setup({
+    hooks = {
+        open = function()
+          require("sessions").load(nil, { silent = true })
+        end,
+    }
+})
+
+require("telescope").setup({
+  extensions = {
+    workspaces = {
+      -- keep insert mode after selection in the picker, default is false
+      keep_insert = true,
+    }
+  }
+})
+
+vim.keymap.set('n', '<C-f><C-w>', ':WorkspacesList<CR>', {})
 '''
