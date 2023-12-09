@@ -287,6 +287,7 @@ vim.keymap.set('n', '<C-f><C-p>', builtin.live_grep, {})
 vim.keymap.set('n', '<C-f><C-b>', builtin.buffers, {})
 vim.keymap.set('n', '<C-f><C-h>', builtin.help_tags, {})
 vim.keymap.set('n', '<C-f><C-s>', builtin.colorscheme, {})
+vim.keymap.set('n', '<C-f><C-t>', ":Telescope<CR>", {})
 
 telescope = require("telescope").setup({
   extensions = {
@@ -533,7 +534,7 @@ nnoremap <C-p> :PrevimOpen<CR>
 repo = 'Equilibris/nx.nvim'
 lua_add = '''
 require('nx').setup({
-  nx_cmd_root = 'pnpm nx',
+  nx_cmd_root = 'nx',
 })
 require('nx.generators')
 
@@ -591,4 +592,18 @@ require("telescope").setup({
 })
 
 vim.keymap.set('n', '<C-f><C-w>', ':WorkspacesList<CR>', {})
+'''
+
+[[plugins]]
+# https://github.com/jackMort/ChatGPT.nvim 
+repo = 'jackMort/ChatGPT.nvim'
+depends = ['MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim']
+lua_add = '''
+require("chatgpt").setup({
+    api_key_cmd = "security find-generic-password -a ChatGPT -s ChatGPT -w"
+})
+
+vim.keymap.set("n", "<C-g><C-g>", ":ChatGPT<CR>", {})
+vim.keymap.set("n", "<C-g><C-a>", ":ChatGPTActAs<CR>", {})
+vim.keymap.set("n", "<C-g><C-i>", ":ChatGPTEditWithInstructions<CR>", {})
 '''
