@@ -2,13 +2,8 @@
 PROMPT='%F{green}%D%f %F{green}%T%f %F{magenta}%c%f %F{green}$%f '
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
-# anyenvの設定
 eval "$(anyenv init -)"
-
-# nvmの設定
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+eval "$(pyenv virtualenv-init -)"
 
 # オプション設定
 setopt auto_cd
