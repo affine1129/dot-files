@@ -1,4 +1,12 @@
 [[plugins]]
+# https://github.com/ellisonleao/gruvbox.nvim
+repo = 'ellisonleao/gruvbox.nvim'
+
+[[plugins]]
+# https://github.com/catppuccin/nvim
+repo = 'catppuccin/nvim'
+
+[[plugins]]
 repo = 'sainnhe/everforest'
 
 [[plugins]]
