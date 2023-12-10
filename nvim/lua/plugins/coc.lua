@@ -7,6 +7,14 @@ vim.g.coc_global_extensions = {
         'coc-prettier',
         -- https://github.com/neoclide/coc-stylelint
         'coc-stylelint',
+        -- https://github.com/neoclide/coc-tsserver
+        'coc-tsserver',
+        -- https://github.com/neoclide/coc-css
+        'coc-css',
+        -- https://github.com/neoclide/coc-html
+        'coc-html',
+        -- https://github.com/josa42/coc-docker
+        'coc-docker'
 }
 
 -- Some servers have issues with backup files, see #649
