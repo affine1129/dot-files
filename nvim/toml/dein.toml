@@ -606,4 +606,5 @@ require("chatgpt").setup({
 vim.keymap.set("n", "<C-g><C-g>", ":ChatGPT<CR>", {})
 vim.keymap.set("n", "<C-g><C-a>", ":ChatGPTActAs<CR>", {})
 vim.keymap.set("n", "<C-g><C-i>", ":ChatGPTEditWithInstructions<CR>", {})
+vim.keymap.set("n", "<C-g><C-r>", ":ChatGPTRun ", {})
 '''

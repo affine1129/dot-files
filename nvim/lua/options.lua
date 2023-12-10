@@ -34,6 +34,8 @@ local options = {
         -- indent setting
         expandtab = true,
         tabstop = 2,
+        softtabstop = 2,
+        shiftwidth = 2
 }
 
 for k, v in pairs(options) do
