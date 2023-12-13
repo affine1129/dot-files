@@ -431,7 +431,7 @@ lua_add = '''
 # https://github.com/folke/zen-mode.nvim
 repo = 'folke/zen-mode.nvim'
 lua_add = '''
-vim.keymap.set("n", "<Space>z", ":ZenMode<CR>")
+vim.keymap.set("n", "<C-z>", ":ZenMode<CR>")
 '''
 
 [[plugins]]
@@ -591,7 +591,7 @@ require("telescope").setup({
   }
 })
 
-vim.keymap.set('n', '<C-f><C-w>', ':WorkspacesList<CR>', {})
+vim.keymap.set('n', '<C-f><C-w>', ':Telescope workspaces<CR>', {})
 '''
 
 [[plugins]]

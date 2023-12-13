@@ -5,9 +5,13 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(anyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/shims:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
 # オプション設定
-setopt auto_cd
-autoload -U zmv
 set -o vi
 
 # 削除用コマンド
