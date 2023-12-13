@@ -309,8 +309,8 @@ telescope = require("telescope").setup({
           '~/.config', max_depth = 1
         },
       },
-      hidden_files = true, -- default: false
-      -- theme = "dropdown",
+      hidden_files = false, -- default: false
+      theme = "dropdown",
       order_by = "asc",
       search_by = "title",
       -- default for on_project_selected = find project files
@@ -602,7 +602,18 @@ vim.keymap.set("n", "<C-g><C-a>", ":ChatGPTActAs<CR>", {})
 vim.keymap.set("n", "<C-g><C-i>", ":ChatGPTEditWithInstructions<CR>", {})
 vim.keymap.set("n", "<C-g><C-r>", ":ChatGPTRun ", {})
 '''
+
 [[plugins]]
 # https://github.com/nvim-telescope/telescope-project.nvim
 repo = 'nvim-telescope/telescope-project.nvim'
 depends = ['nvim-telescope/telescope.nvim']
+
+[[plugins]]
+# https://github.com/rmagatti/auto-session
+repo = 'rmagatti/auto-session'
+lua_add = '''
+require("auto-session").setup {
+  log_level = "error",
+  auto_session_enable_last_session = true,
+}
+'''
