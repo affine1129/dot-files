@@ -565,9 +565,6 @@ require('nx').setup({
 })
 require('nx.generators')
 
-vim.keymap.set("n", "<C-f><C-r>", function()
-  require('nx.read-configs').read_nx_root(function() end)
-end)
 vim.keymap.set("n", "<C-f><C-n>", function()
   require('nx.generators').generators()
 end)
