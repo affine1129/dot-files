@@ -280,6 +280,7 @@ repo = 'nvim-lua/plenary.nvim'
 [[plugins]]
 # https://github.com/nvim-telescope/telescope.nvim
 repo = 'nvim-telescope/telescope.nvim'
+depends = ['rmagatti/auto-session']
 lua_add = '''
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<C-f><C-f>', builtin.find_files, {})
@@ -313,17 +314,18 @@ telescope = require("telescope").setup({
       theme = "dropdown",
       order_by = "asc",
       search_by = "title",
+      sync_with_nvim_tree = true, -- default false
       -- default for on_project_selected = find project files
-      -- on_project_selected = function(prompt_bufnr)
-        -- Do anything you want in here. For example:
-        -- project_actions.change_working_directory(prompt_bufnr, false)
-        -- require("harpoon.ui").nav_file(1)
-      -- end
+      on_project_selected = function(prompt_bufnr)
+        require("telescope._extensions.project.actions").change_working_directory(prompt_bufnr, false)
+        vim.cmd("SessionRestore")
+      end
     }
 
   }
 })
 require('telescope').load_extension('coc')
+require('telescope').load_extension('project')
 '''
 
 [[plugins]]
@@ -559,7 +561,7 @@ nnoremap <C-p> :PrevimOpen<CR>
 repo = 'Equilibris/nx.nvim'
 lua_add = '''
 require('nx').setup({
-  nx_cmd_root = 'nx',
+  nx_cmd_root = 'pnpm nx',
 })
 require('nx.generators')
 
@@ -606,7 +608,6 @@ vim.keymap.set("n", "<C-g><C-r>", ":ChatGPTRun ", {})
 [[plugins]]
 # https://github.com/nvim-telescope/telescope-project.nvim
 repo = 'nvim-telescope/telescope-project.nvim'
-depends = ['nvim-telescope/telescope.nvim']
 
 [[plugins]]
 # https://github.com/rmagatti/auto-session
@@ -614,6 +615,6 @@ repo = 'rmagatti/auto-session'
 lua_add = '''
 require("auto-session").setup {
   log_level = "error",
-  auto_session_enable_last_session = true,
+  auto_session_suppress_dirs = { "~/" },
 }
 '''
