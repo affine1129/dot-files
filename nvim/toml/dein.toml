@@ -34,7 +34,7 @@ end
 
 require('lualine').setup {
   options = {
-    theme = 'everforest'
+    theme = 'tokyonight-moon'
   },
   sections = {
     lualine_a = {
@@ -534,20 +534,21 @@ require("noice").setup({
 })
 '''
 
+
 [[plugins]]
 # https://github.com/MattesGroeger/vim-bookmarks
 repo = 'MattesGroeger/vim-bookmarks'
 
 [[plugins]]
+repo = 'godlygeek/tabular'
+
+[[plugins]]
 # https://github.com/preservim/vim-markdown
 repo = 'plasticboy/vim-markdown'
+depends = ['godlygeek/tabular']
 hook_add = '''
-let g:vim_markdown_folding_disabled = 0
-let g:vim_markdown_folding_style_pythonic = 1
-let g:vim_markdown_no_extensions_in_markdown = 1
-let g:vim_markdown_folding_level = 6
-
-map <Plug> <Plug>Markdown_OpenUrlUnderCursor
+let g:vim_markdown_folding_disabled = 1
+" let g:vim_markdown_folding_level = 1
 '''
 
 [[plugins]]
