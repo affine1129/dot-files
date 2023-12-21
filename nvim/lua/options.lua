@@ -8,11 +8,11 @@ local options = {
 
         -- fold setting
         foldmethod = "indent",
-        foldcolumn = "1",
+        foldcolumn = "0",
         foldlevel = 255,
 
         -- row setting
-        number = true,
+        -- number = true,
         swapfile = false,
 
         -- cursor setting
