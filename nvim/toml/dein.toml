@@ -289,7 +289,6 @@ vim.keymap.set('n', '<C-f><C-b>', builtin.buffers, {})
 vim.keymap.set('n', '<C-f><C-h>', builtin.help_tags, {})
 vim.keymap.set('n', '<C-f><C-s>', builtin.colorscheme, {})
 vim.keymap.set('n', '<C-f><C-t>', ":Telescope<CR>", {})
-vim.keymap.set('n', '/', builtin.current_buffer_fuzzy_find, {})
 vim.keymap.set('n', '?', builtin.current_buffer_fuzzy_find, {})
 vim.api.nvim_set_keymap(
         'n',
@@ -467,9 +466,11 @@ vim.keymap.set("n", "<C-z>", ":ZenMode<CR>")
 repo = 'folke/noice.nvim'
 depends = ['MunifTanjim/nui.nvim', 'rcarriga/nvim-notify']
 lua_add = '''
+vim.keymap.set("n", ";", ":")
 require("noice").setup({
   cmdline = {
     format = {
+      cmdline = { pattern = "^:" },
       search_down = { icon = "🔍DOWN" },
       search_up = { icon = "🔍UP" },
     },
@@ -524,7 +525,7 @@ require("noice").setup({
   },
   -- you can enable a preset for easier configuration
   presets = {
-    bottom_search = true, -- use a classic bottom cmdline for search
+    bottom_search = false, -- use a classic bottom cmdline for search
     command_palette = false, -- position the cmdline and popupmenu together
     long_message_to_split = true, -- long messages will be sent to a split
     inc_rename = true, -- enables an input dialog for inc-rename.nvim
@@ -538,11 +539,13 @@ require("noice").setup({
 repo = 'MattesGroeger/vim-bookmarks'
 
 [[plugins]]
+# https://github.com/preservim/vim-markdown
 repo = 'plasticboy/vim-markdown'
 hook_add = '''
 let g:vim_markdown_folding_disabled = 0
 let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_no_extensions_in_markdown = 1
+let g:vim_markdown_folding_level = 6
 
 map <Plug> <Plug>Markdown_OpenUrlUnderCursor
 '''
@@ -665,4 +668,6 @@ require('ufo').setup({
 -- will override global handler if it is existed
 -- local bufnr = vim.api.nvim_get_current_buf()
 -- require('ufo').setFoldVirtTextHandler(bufnr, handler)
+
+vim.keymap.set('n', '<Space><Space>', 'za', {})
 '''
