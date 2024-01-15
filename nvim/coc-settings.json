@@ -4,7 +4,8 @@
     "html",
     "typescript",
     "javascript",
-    "json"
+    "json",
+    "python"
   ],
   "suggest.completionItemKindLabels": {
     "function": "\uf794",

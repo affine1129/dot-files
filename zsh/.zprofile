@@ -3,12 +3,13 @@ PROMPT='%F{green}%D%f %F{green}%T%f %F{magenta}%c%f %F{green}$%f '
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(anyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/shims:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
+fi
+
+if command -v pyenv-virtualenv 1>/dev/null 2>&1; then
+  eval "$(pyenv virtualenv-init -)"
 fi
 
 # オプション設定
@@ -34,9 +35,6 @@ alias mk_zsh='nvim ~/.zshrc'
 alias mk_alias='nvim ~/.config/zsh/.zprofile'
 alias mk_n='nvim ~/.config/nvim/init.vim'
 alias karabiner="nvim ~/.config/karabiner/karabiner.json"
-
-# 移動コマンド
-alias cd_notion='cd "/Users/ittokuryota/Library/Mobile Documents/iCloud~com~omz-software~Pythonista3/Documents/damp-escarpment-64145"'
 
 # Open Command
 alias uuid="uuidgen | tr '[:upper:]' '[:lower:]'"
