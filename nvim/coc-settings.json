@@ -1,5 +1,6 @@
 {
   "coc.preferences.formatOnSaveFiletypes": [
+    "yaml",
     "css",
     "html",
     "typescript",
@@ -32,5 +33,9 @@
     "reference": "\uf87a",
     "typeParameter": "\uf278",
     "default": "\uf29c"
-  }
+  },
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.formatting.provider": "autopep8",
+  "python.formatting.autopep8Args": ["--ignore=E501"]
 }

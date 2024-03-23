@@ -308,6 +308,9 @@ telescope = require("telescope").setup({
         {
           '~/.config', max_depth = 1
         },
+        {
+          '~/Workspace/01_Code', max_depth = 3
+        },
       },
       hidden_files = false, -- default: false
       theme = "dropdown",
@@ -565,7 +568,7 @@ nnoremap <C-p> :PrevimOpen<CR>
 repo = 'Equilibris/nx.nvim'
 lua_add = '''
 require('nx').setup({
-  nx_cmd_root = 'pnpm nx',
+  nx_cmd_root = 'npx nx',
 })
 require('nx.generators')
 
