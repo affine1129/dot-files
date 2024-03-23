@@ -16,9 +16,19 @@ if (vim.fn['dein#load_state'](dein_dir) == 1) then
   vim.fn['dein#begin'](dein_dir)
   local rc_dir = vim.fn.expand('~/.config/nvim/toml')
   local toml = rc_dir..'/dein.toml'
-  local lazy_toml = rc_dir..'/dein_lazy.toml'
+  local toml_theme = rc_dir..'/dein_theme.toml'
+  local toml_filer = rc_dir..'/dein_filer.toml'
+  local toml_md = rc_dir..'/dein_md.toml'
+  local toml_git = rc_dir..'/dein_git.toml'
+  local toml_coding = rc_dir..'/dein_coding.toml'
+  local toml_util = rc_dir..'/dein_util.toml'
+  vim.fn['dein#load_toml'](toml_theme, { lazy = 0 })
   vim.fn['dein#load_toml'](toml, { lazy = 0 })
-  vim.fn['dein#load_toml'](lazy_toml, { lazy = 1 })
+  vim.fn['dein#load_toml'](toml_filer, { lazy = 0 })
+  vim.fn['dein#load_toml'](toml_md, { lazy = 1 })
+  vim.fn['dein#load_toml'](toml_git, { lazy = 0 })
+  vim.fn['dein#load_toml'](toml_coding, { lazy = 1 })
+  vim.fn['dein#load_toml'](toml_util, { lazy = 0 })
   vim.fn['dein#end']()
   vim.fn['dein#save_state']()
 end

@@ -1,280 +1,26 @@
+##########
+# Common #
+##########
 [[plugins]]
-# https://github.com/ellisonleao/gruvbox.nvim
-repo = 'ellisonleao/gruvbox.nvim'
-
-[[plugins]]
-# https://github.com/catppuccin/nvim
-repo = 'catppuccin/nvim'
-
-[[plugins]]
-repo = 'sainnhe/everforest'
-
-[[plugins]]
-repo = 'folke/tokyonight.nvim'
-
-[[plugins]]
-repo = 'nvim-lualine/lualine.nvim'
-depends = ['nvim-tree/nvim-web-devicons']
-lua_add = '''
-local lsp_names = function()
-  local clients = {}
-  for _, client in ipairs(vim.lsp.get_active_clients { bufnr = 0 }) do
-    if client.name == 'null-ls' then
-      local sources = {}
-      for _, source in ipairs(require('null-ls.sources').get_available(vim.bo.filetype)) do
-        table.insert(sources, source.name)
-      end
-      table.insert(clients, 'null-ls(' .. table.concat(sources, ', ') .. ')')
-    else
-      table.insert(clients, client.name)
-    end
-  end
-  return ' ' .. table.concat(clients, ', ')
-end
-
-require('lualine').setup {
-  options = {
-    theme = 'tokyonight-moon'
-  },
-  sections = {
-    lualine_a = {
-      {
-        'datetime',
-        -- options: default, us, uk, iso, or your own format string ("%H:%M", etc..)
-        style = '%Y/%m/%d(%A) %H:%M'
-      }
-    },
-    lualine_b = { 'branch', 'diff', 'diagnostics' },
-    lualine_x = { lsp_names },
-    lualine_y = { 'encoding', 'fileformat', 'filetype' },
-    lualine_z = { 'progress', 'location' },
-  }
-}
-'''
-
-[[plugins]]
-repo = 'p00f/nvim-ts-rainbow'
-depends = ['nvim-treesitter/nvim-treesitter']
+repo = 'lambdalisue/nerdfont.vim'
 
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
-lua_add = '''
-require("nvim-treesitter.configs").setup {
-  ensure_installed = {"toml", "python", "typescript", "html", "markdown"},
-  auto_install = true,
-  sync_install = false,
-  highlight = {
-    enable = true,
-  },
-  rainbow = {
-    enable = true,
-    extended_mode = true,
-    max_file_lines = nil,
-    colors = {
-      "#f6dcbc",
-      "#bcf6bf",
-      "#bcf3f6",
-      "#bfbcf6",
-      "#f6bcf6",
-    }
-  }
-}
-'''
-
-[[plugins]]
-repo = 'nvim-tree/nvim-web-devicons'
-
-[[plugins]]
-repo = 'akinsho/bufferline.nvim'
-lua_add = '''
-vim.opt.termguicolors = true
-require("bufferline").setup{
-  options = {
-    mode = "tabs",
-    color_icons = true
-  }
-}
-'''
+lua_add = 'require("plugins/nvim-treesitter")'
 
 [[plugins]]
 repo = 'akinsho/toggleterm.nvim'
-lua_add = '''
-
--- デフォルト設定
-local status, toggleterm = pcall(require, "toggleterm")
-if not status then
-  return
-end
-
-toggleterm.setup({
-  open_mapping = [[<C-S-h>]],
-  hide_numbers = true,
-  direction = "horizontal",
-  shell = vim.o.shell,
-  size = 25
-})
-
-function _G.set_terminal_keymaps()
-  local opts = { buffer = 0 }
-  vim.keymap.set('t', '<C-j><C-j>', [[<C-\><C-n>]], opts)
-  vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
-  vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
-  vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
-end
-vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
-
--- floatのターミナル設定
-local Terminal = require("toggleterm.terminal").Terminal
-
-local float_term = Terminal:new({
-  direction = "float",
-  hidden = true,
-  count = 6
-})
-function _float_term_toggle()
-  float_term:toggle()
-end
-vim.api.nvim_set_keymap("n", "<C-S-f>", "<cmd>lua _float_term_toggle()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("t", "<C-S-f>", "<cmd>lua _float_term_toggle()<CR>", { noremap = true, silent = true })
-
--- lazygitの設定
-local lazygit = Terminal:new({
-  cmd = "lazygit",
-  direction = "float",
-  hidden = true,
-  count = 7
-})
-function _lazygit_toggle()
-  lazygit:toggle()
-end
-vim.api.nvim_set_keymap("n", "<C-S-g>", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("t", "<C-S-g>", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
-
--- lazydockerの設定
-local lazydocker = Terminal:new({
-  cmd = "lazydocker",
-  direction = "float",
-  hidden = true,
-  count = 8
-})
-function _lazydocker_toggle()
-  lazydocker:toggle()
-end
-vim.api.nvim_set_keymap("n", "<C-S-d>", "<cmd>lua _lazydocker_toggle()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("t", "<C-S-d>", "<cmd>lua _lazydocker_toggle()<CR>", { noremap = true, silent = true })
-
-'''
-
-[[plugins]]
-repo = 'airblade/vim-gitgutter'
-hook_add = '''
-"" git操作
-
-" g]で前の変更箇所へ移動する
-nnoremap g[ :GitGutterPrevHunk<CR>
-" g[で次の変更箇所へ移動する
-nnoremap g] :GitGutterNextHunk<CR>
-
-" ghでdiffをハイライトする
-nnoremap gh :GitGutterLineHighlightsToggle<CR>
-" gpでカーソル行のdiffを表示する
-nnoremap gp :GitGutterPreviewHunk<CR>
-
-" 記号の色を変更する
-highlight GitGutterAdd ctermfg=green
-highlight GitGutterChange ctermfg=blue
-highlight GitGutterDelete ctermfg=red
-
-"" 反映時間を短くする(デフォルトは4000ms)
-set updatetime=250
-'''
-
-[[plugins]]
-repo = 'APZelos/blamer.nvim'
-hook_add = '''
-let g:blamer_enabled=1
-let g:blamer_show_in_visual_modes=0
-let g:blamer_show_in_insert_modes=0
-let g:blamer_delay = 500
-'''
-
-[[plugins]]
-repo = 'jacoborus/tender.vim'
-
-[[plugins]]
-repo = 'thinca/vim-visualstar'
-
-[[plugins]]
-repo = 'preservim/nerdcommenter'
-hook_add = '''
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
-" Enable trimming of trailing whitespace when uncommenting
-let g:NERDTrimTrailingWhitespace = 1
-
-let g:NERDDefaultAlign='left'
-
-nnoremap <leader>cc <plug>NERDCommenterToggle 
-vnoremap <leader>cc <plug>NERDCommenterToggle 
-nnoremap <leader>c<space> <plug>NERDCommenterComment
-vnoremap <leader>c<space> <plug>NERDCommenterComment
-'''
-
-[[plugins]]
-repo = 'tyru/open-browser.vim'
-hook_add = '''
-let g:netrw_nogx = 1 " disable netrw's gx mapping.
-nnoremap gx <Plug>(openbrowser-smart-search)
-'''
+lua_add = 'require("plugins/toggleterm")'
 
 [[plugins]]
 repo = 'neoclide/coc.nvim'
 merge = 0
 rev = 'release'
 on_ft = ['python']
+lua_add = 'require("plugins/coc")'
 
 [[plugins]]
-repo = 'fannheyward/telescope-coc.nvim'
-lua_add = '''
-'''
-
-[[plugins]]
-repo = 'lambdalisue/fern.vim'
-hook_add = '''
-'''
-
-[[plugins]]
-repo = 'lambdalisue/fern-git-status.vim'
-depends = ['lambdalisue/fern.vim']
-
-[[plugins]]
-repo = 'lambdalisue/fern-bookmark.vim'
-hook_add = '''
-nnoremap <C-b> :Fern bookmark:///<CR>
-'''
-
-[[plugins]]
-repo = 'lambdalisue/nerdfont.vim'
-
-[[plugins]]
-repo = 'lambdalisue/fern-renderer-nerdfont.vim'
-hook_add = '''
-let g:fern#renderer = 'nerdfont'
-'''
-
-[[plugins]]
-repo = 'lambdalisue/glyph-palette.vim'
-hook_add = '''
-augroup my-glyph-palette
-  autocmd! *
-  autocmd FileType fern call glyph_palette#apply()
-augroup END
-'''
-
-[[plugins]]
-repo = 'vimtry1/today.vim'
-
-[[plugins]]
+# https://github.com/nvim-lua/plenary.nvim
 repo = 'nvim-lua/plenary.nvim'
 
 [[plugins]]
@@ -282,332 +28,11 @@ repo = 'nvim-lua/plenary.nvim'
 repo = 'nvim-telescope/telescope.nvim'
 depends = ['rmagatti/auto-session']
 lua_add = '''
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<C-f><C-f>', builtin.find_files, {})
-vim.keymap.set('n', '<C-f><C-p>', builtin.live_grep, {})
-vim.keymap.set('n', '<C-f><C-b>', builtin.buffers, {})
-vim.keymap.set('n', '<C-f><C-h>', builtin.help_tags, {})
-vim.keymap.set('n', '<C-f><C-s>', builtin.colorscheme, {})
-vim.keymap.set('n', '<C-f><C-t>', ":Telescope<CR>", {})
-vim.keymap.set('n', '?', builtin.current_buffer_fuzzy_find, {})
-vim.api.nvim_set_keymap(
-        'n',
-        '<C-f><C-w>',
-        ":lua require'telescope'.extensions.project.project{}<CR>",
-        {noremap = true, silent = true}
-)
-
-telescope = require("telescope").setup({
-  extensions = {
-    coc = {
-        theme = 'ivy',
-        prefer_locations = true, -- always use Telescope locations to preview definitions/declarations/implementations etc
-    },
-    project = {
-      base_dirs = {
-        {
-          '~/.config', max_depth = 1
-        },
-        {
-          '~/Workspace/01_Code', max_depth = 3
-        },
-      },
-      hidden_files = false, -- default: false
-      theme = "dropdown",
-      order_by = "asc",
-      search_by = "title",
-      sync_with_nvim_tree = true, -- default false
-      -- default for on_project_selected = find project files
-      on_project_selected = function(prompt_bufnr)
-        require("telescope._extensions.project.actions").change_working_directory(prompt_bufnr, false)
-        vim.cmd("SessionRestore")
-      end
-    }
-
-  }
-})
-require('telescope').load_extension('coc')
-require('telescope').load_extension('project')
+require("plugins/telescope")
 '''
 
 [[plugins]]
-# https://github.com/lukas-reineke/indent-blankline.nvim
-repo = 'lukas-reineke/indent-blankline.nvim'
-branch = 'ibl'
-lua_add = '''
--- require("ibl").setup {
---   space_char_blankline = " ",
---   show_current_context = true,
---   show_current_context_start = true,
--- }
-local highlight = {
-    "RainbowRed",
-    "RainbowYellow",
-    "RainbowBlue",
-    "RainbowOrange",
-    "RainbowGreen",
-    "RainbowViolet",
-    "RainbowCyan",
-}
-
-local hooks = require "ibl.hooks"
-
--- create the highlight groups in the highlight setup hook, so they are reset
--- every time the colorscheme changes
-hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-    vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
-    vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
-    vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
-    vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
-    vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
-    vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
-    vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
-end)
-
-require("ibl").setup { 
---    indent = { highlight = highlight } 
-}
-'''
-
-[[plugins]]
-# https://github.com/monaqa/dial.nvim
-repo = 'monaqa/dial.nvim'
-lua_add = '''
-vim.keymap.set("n", "<C-a>", function()
-  require("dial.map").manipulate("increment", "normal")
-end)
-vim.keymap.set("n", "<C-x>", function()
-  require("dial.map").manipulate("decrement", "normal")
-end)
-vim.keymap.set("n", "g<C-a>", function()
-  require("dial.map").manipulate("increment", "gnormal")
-end)
-vim.keymap.set("n", "g<C-x>", function()
-  require("dial.map").manipulate("decrement", "gnormal")
-end)
-vim.keymap.set("v", "<C-a>", function()
-  require("dial.map").manipulate("increment", "visual")
-end)
-vim.keymap.set("v", "<C-x>", function()
-  require("dial.map").manipulate("decrement", "visual")
-end)
-vim.keymap.set("v", "g<C-a>", function()
-  require("dial.map").manipulate("increment", "gvisual")
-end)
-vim.keymap.set("v", "g<C-x>", function()
-  require("dial.map").manipulate("decrement", "gvisual")
-end)
-local augend = require("dial.augend")
-require("dial.config").augends:register_group{
-  default = {
-    augend.integer.alias.decimal_int,
-    augend.date.alias["%Y/%m/%d"],
-    augend.date.alias["%m/%d"],
-    augend.date.alias["%-m/%-d"],
-    augend.date.alias["%Y-%m-%d"],
-    augend.date.alias["%Y年%-m月%-d日"],
-    augend.date.alias["%H:%M:%S"],
-    augend.date.alias["%H:%M"],
-    augend.constant.alias.ja_weekday,
-    augend.constant.alias.ja_weekday_full,
-    augend.constant.alias.alpha,
-    augend.constant.alias.Alpha,
-    -- uppercase hex number (0x1A1A, 0xEEFE, etc.)
-    augend.constant.new{
-      elements = {"and", "or"},
-      word = true, -- if false, "sand" is incremented into "sor", "doctor" into "doctand", etc.
-      cyclic = true, -- "or" is incremented into "and".
-    },
-    augend.constant.new{
-      elements = {"&&", "||"},
-      word = false,
-      cyclic = true,
-    },
-    augend.constant.new{
-      elements = {"true", "false"},
-      word = true,
-      cyclic = true,
-    },
-    augend.constant.new{
-      elements = {"True", "False"},
-      word = true,
-      cyclic = true,
-    },
-  },
-}
-'''
-
-[[plugins]]
-# https://github.com/kylechui/nvim-surround
-repo = 'kylechui/nvim-surround'
-lua_add = '''
-require("nvim-surround").setup({})
-'''
-
-[[plugins]]
-# https://github.com/MunifTanjim/nui.nvim
-repo = 'MunifTanjim/nui.nvim'
-lua_add = '''
-'''
-
-[[plugins]]
-# https://github.com/rcarriga/nvim-notify
-repo = 'rcarriga/nvim-notify' 
-lua_add = '''
-'''
-
-[[plugins]]
-# https://github.com/folke/zen-mode.nvim
-repo = 'folke/zen-mode.nvim'
-lua_add = '''
-vim.keymap.set("n", "<C-z>", ":ZenMode<CR>")
-'''
-
-[[plugins]]
-# https://github.com/folke/noice.nvim
-# https://dev.classmethod.jp/articles/eetann-noice-nvim-beginner/
-repo = 'folke/noice.nvim'
-depends = ['MunifTanjim/nui.nvim', 'rcarriga/nvim-notify']
-lua_add = '''
-vim.keymap.set("n", ";", ":")
-require("noice").setup({
-  cmdline = {
-    format = {
-      cmdline = { pattern = "^:" },
-      search_down = { icon = "🔍DOWN" },
-      search_up = { icon = "🔍UP" },
-    },
-  },
-  messages = {
-    -- NOTE: If you enable messages, then the cmdline is enabled automatically.
-    -- This is a current Neovim limitation.
-    enabled = true, -- enables the Noice messages UI
-    view = "mini", -- default view for messages
-    view_error = "mini", -- view for errors
-    view_warn = "mini", -- view for warnings
-    view_history = "messages", -- view for :messages
-    view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
-  },
-  views = {
-    cmdline_popup = {
-      position = {
-        row = 30,
-        col = "50%",
-      },
-      size = {
-        width = 60,
-        height = "auto",
-      },
-    },
-    popupmenu = {
-      relative = "editor",
-      position = {
-        row = 33,
-        col = "50%",
-      },
-      size = {
-        width = 60,
-        height = 10,
-      },
-      border = {
-        style = "rounded",
-        padding = { 0, 1 },
-      },
-      win_options = {
-        winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
-      },
-    },
-  },
-  lsp = {
-    -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-    override = {
-      ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-      ["vim.lsp.util.stylize_markdown"] = true,
-      ["cmp.entry.get_documentation"] = true,
-    },
-  },
-  -- you can enable a preset for easier configuration
-  presets = {
-    bottom_search = false, -- use a classic bottom cmdline for search
-    command_palette = false, -- position the cmdline and popupmenu together
-    long_message_to_split = true, -- long messages will be sent to a split
-    inc_rename = true, -- enables an input dialog for inc-rename.nvim
-    lsp_doc_border = true, -- add a border to hover docs and signature help
-  },
-})
-'''
-
-
-[[plugins]]
-# https://github.com/MattesGroeger/vim-bookmarks
-repo = 'MattesGroeger/vim-bookmarks'
-
-[[plugins]]
-repo = 'godlygeek/tabular'
-
-[[plugins]]
-# https://github.com/preservim/vim-markdown
-repo = 'plasticboy/vim-markdown'
-depends = ['godlygeek/tabular']
-hook_add = '''
-let g:vim_markdown_folding_disabled = 1
-" let g:vim_markdown_folding_level = 1
-'''
-
-[[plugins]]
-repo = 'jkramer/vim-checkbox'
-
-[[plugins]]
-repo = 'previm/previm'
-hook_add = '''
-nnoremap <C-p> :PrevimOpen<CR>
-'''
-
-[[plugins]]
-# https://github.com/Equilibris/nx.nvim
-repo = 'Equilibris/nx.nvim'
-lua_add = '''
-require('nx').setup({
-  nx_cmd_root = 'npx nx',
-})
-require('nx.generators')
-
-vim.keymap.set("n", "<C-f><C-n>", function()
-  require('nx.generators').generators()
-end)
-vim.keymap.set("n", "<C-f><C-a>", function()
-  require('nx.on-project-mod')()
-  require('nx.actions').actions_finder()
-end)
-'''
-
-[[plugins]]
-# https://github.com/hrsh7th/nvim-cmp
-repo = 'hrsh7th/nvim-cmp'
-lua_add = '''
-'''
-
-[[plugins]]
-# https://github.com/karb94/neoscroll.nvim
-repo = 'karb94/neoscroll.nvim'
-lua_add = '''
-require('neoscroll').setup()
-'''
-
-[[plugins]]
-# https://github.com/jackMort/ChatGPT.nvim 
-repo = 'jackMort/ChatGPT.nvim'
-depends = ['MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim']
-lua_add = '''
-require("chatgpt").setup({
-    api_key_cmd = "security find-generic-password -a ChatGPT -s ChatGPT -w"
-})
-
-vim.keymap.set("n", "<C-g><C-g>", ":ChatGPT<CR>", {})
-vim.keymap.set("n", "<C-g><C-a>", ":ChatGPTActAs<CR>", {})
-vim.keymap.set("n", "<C-g><C-i>", ":ChatGPTEditWithInstructions<CR>", {})
-vim.keymap.set("n", "<C-g><C-r>", ":ChatGPTRun ", {})
-'''
+repo = 'fannheyward/telescope-coc.nvim'
 
 [[plugins]]
 # https://github.com/nvim-telescope/telescope-project.nvim
@@ -617,61 +42,50 @@ repo = 'nvim-telescope/telescope-project.nvim'
 # https://github.com/rmagatti/auto-session
 repo = 'rmagatti/auto-session'
 lua_add = '''
-require("auto-session").setup {
-  log_level = "error",
-  auto_session_suppress_dirs = { "~/" },
-}
+require("plugins/auto-session")
 '''
 
 [[plugins]]
-repo = 'kevinhwang91/promise-async'
-lua_add = '''
-'''
+# https://github.com/MunifTanjim/nui.nvim
+repo = 'MunifTanjim/nui.nvim'
 
 [[plugins]]
-# https://github.com/kevinhwang91/nvim-ufo
-repo = 'kevinhwang91/nvim-ufo'
-depends = ['kevinhwang91/promise-async']
+# https://github.com/rcarriga/nvim-notify
+repo = 'rcarriga/nvim-notify' 
+
+[[plugins]]
+# https://github.com/folke/noice.nvim
+# https://dev.classmethod.jp/articles/eetann-noice-nvim-beginner/
+repo = 'folke/noice.nvim'
+depends = ['MunifTanjim/nui.nvim', 'rcarriga/nvim-notify']
 lua_add = '''
-local handler = function(virtText, lnum, endLnum, width, truncate)
-    local newVirtText = {}
-    local suffix = (' ↙︎%d '):format(endLnum - lnum)
-    local sufWidth = vim.fn.strdisplaywidth(suffix)
-    local targetWidth = width - sufWidth
-    local curWidth = 0
-    for _, chunk in ipairs(virtText) do
-        local chunkText = chunk[1]
-        local chunkWidth = vim.fn.strdisplaywidth(chunkText)
-        if targetWidth > curWidth + chunkWidth then
-            table.insert(newVirtText, chunk)
-        else
-            chunkText = truncate(chunkText, targetWidth - curWidth)
-            local hlGroup = chunk[2]
-            table.insert(newVirtText, {chunkText, hlGroup})
-            chunkWidth = vim.fn.strdisplaywidth(chunkText)
-            -- str width returned from truncate() may less than 2nd argument, need padding
-            if curWidth + chunkWidth < targetWidth then
-                suffix = suffix .. (' '):rep(targetWidth - curWidth - chunkWidth)
-            end
-            break
-        end
-        curWidth = curWidth + chunkWidth
-    end
-    table.insert(newVirtText, {suffix, 'MoreMsg'})
-    return newVirtText
-end
+require("plugins/noice")
+'''
 
--- global handler
--- `handler` is the 2nd parameter of `setFoldVirtTextHandler`,
--- check out `./lua/ufo.lua` and search `setFoldVirtTextHandler` for detail.
-require('ufo').setup({
-    fold_virt_text_handler = handler
-})
+##########
+# Visual #
+##########
 
--- buffer scope handler
--- will override global handler if it is existed
--- local bufnr = vim.api.nvim_get_current_buf()
--- require('ufo').setFoldVirtTextHandler(bufnr, handler)
+[[plugins]]
+repo = 'nvim-lualine/lualine.nvim'
+depends = ['nvim-tree/nvim-web-devicons']
+lua_add = 'require("plugins/lualine")'
 
-vim.keymap.set('n', '<Space><Space>', 'za', {})
+[[plugins]]
+repo = 'p00f/nvim-ts-rainbow'
+depends = ['nvim-treesitter/nvim-treesitter']
+
+[[plugins]]
+repo = 'nvim-tree/nvim-web-devicons'
+
+[[plugins]]
+repo = 'akinsho/bufferline.nvim'
+lua_add = 'require("plugins/bufferline")'
+
+[[plugins]]
+# https://github.com/lukas-reineke/indent-blankline.nvim
+repo = 'lukas-reineke/indent-blankline.nvim'
+branch = 'ibl'
+lua_add = '''
+require("plugins/indent-blankline")
 '''

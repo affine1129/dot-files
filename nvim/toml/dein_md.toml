@@ -1,0 +1,24 @@
+[[plugins]]
+repo = 'godlygeek/tabular'
+on_ft = ['markdown']
+
+[[plugins]]
+# https://github.com/preservim/vim-markdown
+repo = 'plasticboy/vim-markdown'
+depends = ['godlygeek/tabular']
+lua_add = '''
+vim.g.vim_markdown_folding_disabled = 1
+'''
+on_ft = ['markdown']
+
+[[plugins]]
+repo = 'jkramer/vim-checkbox'
+on_ft = ['markdown']
+
+[[plugins]]
+repo = 'previm/previm'
+lua_add = '''
+vim.api.nvim_set_keymap('n', '<C-p>', ':PrevimOpen<CR>', { noremap = true, silent = true })
+'''
+on_ft = ['markdown']
+

@@ -1,0 +1,11 @@
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+lua_add = 'require("plugins/vim-gitgutter")'
+
+[[plugins]]
+# https://github.com/APZelos/blamer.nvim
+repo = 'APZelos/blamer.nvim'
+lua_add = '''
+vim.g.blamer_enabled = true
+vim.g.blamer_delay = 250
+'''
