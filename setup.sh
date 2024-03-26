@@ -10,4 +10,6 @@ brew install ripgrep
 # https://github.com/sharkdp/fd
 brew install fd
 
+brew install --cask wezterm
+
 sh ./sh/link.sh
