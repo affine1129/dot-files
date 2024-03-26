@@ -18,6 +18,9 @@ config.hide_tab_bar_if_only_one_tab = true
 -- hide title bar
 config.window_decorations = "RESIZE"
 
+-- disable keybindgins
+config.disable_default_key_bindings = true
+
 wezterm.on('toggle-opacity', function(window, pane)
   local overrides = window:get_config_overrides() or {}
   if overrides.window_background_opacity == 1 then
@@ -39,12 +42,18 @@ config.keys = {
   {
     key = '[',
     mods = 'CMD',
-    action = act.ActivatePaneDirection 'Left',
+    action = act.Multiple{
+      act.ActivatePaneDirection 'Next',
+      -- act.SetPaneZoomState(true)
+    }
   },
   {
     key = ']',
     mods = 'CMD',
-    action = act.ActivatePaneDirection 'Right',
+    action = act.Multiple{
+      act.ActivatePaneDirection 'Prev',
+      -- act.SetPaneZoomState(true)
+    }
   },
   {
     key = 'w',
@@ -70,6 +79,21 @@ config.keys = {
     key = 'u',
     mods = 'CMD',
     action = wezterm.action.EmitEvent 'toggle-opacity',
+  },
+  {
+    key = 'p',
+    mods = 'CMD|SHIFT',
+    action = wezterm.action.ActivateCommandPalette,
+  },
+  {
+    key = 'c',
+    mods = 'CMD',
+    action = wezterm.action.CopyTo 'Clipboard',
+  },
+  {
+    key = 'v',
+    mods = 'CMD',
+    action = act.PasteFrom 'Clipboard'
   },
 }
 

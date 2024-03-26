@@ -25,7 +25,7 @@ telescope = require("telescope").setup({
           '~/.config', max_depth = 1
         },
         {
-          '~/Workspace/01_Code', max_depth = 3
+          '~/Workspace/', max_depth = 3
         },
       },
       hidden_files = false, -- default: false

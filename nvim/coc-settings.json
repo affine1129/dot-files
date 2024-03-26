@@ -6,7 +6,8 @@
     "typescript",
     "javascript",
     "json",
-    "python"
+    "python",
+    "yaml"
   ],
   "suggest.completionItemKindLabels": {
     "function": "\uf794",
@@ -36,6 +37,7 @@
   },
   "python.linting.enabled": true,
   "python.linting.flake8Enabled": true,
+  "python.linting.flake8Args": ["--config=tox.ini"],
   "python.formatting.provider": "autopep8",
   "python.formatting.autopep8Args": ["--ignore=E501"]
 }
