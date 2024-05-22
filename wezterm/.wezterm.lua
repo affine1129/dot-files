@@ -44,7 +44,7 @@ config.keys = {
     mods = 'CMD',
     action = act.Multiple{
       act.ActivatePaneDirection 'Next',
-      -- act.SetPaneZoomState(true)
+      act.SetPaneZoomState(true)
     }
   },
   {
@@ -52,7 +52,7 @@ config.keys = {
     mods = 'CMD',
     action = act.Multiple{
       act.ActivatePaneDirection 'Prev',
-      -- act.SetPaneZoomState(true)
+      act.SetPaneZoomState(true)
     }
   },
   {

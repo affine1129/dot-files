@@ -1,13 +1,11 @@
 {
   "coc.preferences.formatOnSaveFiletypes": [
-    "yaml",
     "css",
     "html",
     "typescript",
     "javascript",
     "json",
-    "python",
-    "yaml"
+    "python"
   ],
   "suggest.completionItemKindLabels": {
     "function": "\uf794",
@@ -39,5 +37,6 @@
   "python.linting.flake8Enabled": true,
   "python.linting.flake8Args": ["--config=tox.ini"],
   "python.formatting.provider": "autopep8",
-  "python.formatting.autopep8Args": ["--ignore=E501"]
+  "python.formatting.autopep8Args": ["--ignore=E501"],
+  "coc.preferences.debug": true
 }
