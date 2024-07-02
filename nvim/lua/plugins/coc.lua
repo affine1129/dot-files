@@ -1,5 +1,6 @@
 vim.g.coc_global_extensions = {
         'coc-pyright',
+        -- https://github.com/fannheyward/coc-pyright
         'coc-angular',
         -- https://github.com/neoclide/coc-eslint
         'coc-eslint',

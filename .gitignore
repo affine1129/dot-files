@@ -10,3 +10,4 @@ coc/
 qiita-cli/
 anyenv/
 pip/
+.venv/

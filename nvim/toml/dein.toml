@@ -52,6 +52,13 @@ repo = 'MunifTanjim/nui.nvim'
 [[plugins]]
 # https://github.com/rcarriga/nvim-notify
 repo = 'rcarriga/nvim-notify' 
+lua_add = '''
+require("notify").setup {
+  stages = 'fade_in_slide_out',
+  background_colour = 'FloatShadow',
+  timeout = 0,
+}
+'''
 
 [[plugins]]
 # https://github.com/folke/noice.nvim

@@ -1,4 +1,5 @@
 {
+  "coc.preferences.formatOnType": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "html",
@@ -33,10 +34,14 @@
     "typeParameter": "\uf278",
     "default": "\uf29c"
   },
+  "python.pythonPath": "~/.config/.venv/bin/python",
   "python.linting.enabled": true,
   "python.linting.flake8Enabled": true,
   "python.linting.flake8Args": ["--config=tox.ini"],
   "python.formatting.provider": "autopep8",
   "python.formatting.autopep8Args": ["--ignore=E501"],
+  "pyright.inlayHints.variableTypes": false,
+  "pyright.inlayHints.functionReturnTypes": false,
+  "pyright.inlayHints.parameterTypes": false,
   "coc.preferences.debug": true
 }

@@ -21,6 +21,8 @@ config.window_decorations = "RESIZE"
 -- disable keybindgins
 config.disable_default_key_bindings = true
 
+config.exit_behavior = "Close"
+
 wezterm.on('toggle-opacity', function(window, pane)
   local overrides = window:get_config_overrides() or {}
   if overrides.window_background_opacity == 1 then
@@ -35,26 +37,31 @@ end)
 local act = wezterm.action
 config.keys = {
   {
-    key = 'd',
-    mods = 'CMD',
-    action = act.SplitHorizontal { domain = 'CurrentPaneDomain' },
+    key = 'p',
+    mods = 'CMD|SHIFT',
+    action = wezterm.action.ActivateCommandPalette,
   },
-  {
-    key = '[',
-    mods = 'CMD',
-    action = act.Multiple{
-      act.ActivatePaneDirection 'Next',
-      act.SetPaneZoomState(true)
-    }
-  },
-  {
-    key = ']',
-    mods = 'CMD',
-    action = act.Multiple{
-      act.ActivatePaneDirection 'Prev',
-      act.SetPaneZoomState(true)
-    }
-  },
+  -- {
+  --   key = 'd',
+  --   mods = 'CMD',
+  --   action = act.SplitHorizontal { domain = 'CurrentPaneDomain' },
+  -- },
+  -- {
+  --   key = '[',
+  --   mods = 'CMD',
+  --   action = act.Multiple{
+  --     act.ActivatePaneDirection 'Next',
+  --     act.SetPaneZoomState(true)
+  --   }
+  -- },
+  -- {
+  --   key = ']',
+  --   mods = 'CMD',
+  --   action = act.Multiple{
+  --     act.ActivatePaneDirection 'Prev',
+  --     act.SetPaneZoomState(true)
+  --   }
+  -- },
   {
     key = 'w',
     mods = 'CMD',
@@ -94,6 +101,25 @@ config.keys = {
     key = 'v',
     mods = 'CMD',
     action = act.PasteFrom 'Clipboard'
+  },
+  {
+    key = 't',
+    mods = 'CMD',
+    action = act.SpawnCommandInNewTab({
+        cwd = wezterm.home_dir,
+    }),
+  },
+  { key = '[', mods = 'CMD|SHIFT', action = act.ActivateTabRelative(-1) },
+  { key = ']', mods = 'CMD|SHIFT', action = act.ActivateTabRelative(1) },
+  {
+    key = "+",
+    mods = "CMD|SHIFT",
+    action = wezterm.action.IncreaseFontSize,
+  },
+  {
+      key = "-",
+      mods = "CMD",
+      action = wezterm.action.DecreaseFontSize,
   },
 }
 

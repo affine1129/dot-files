@@ -4,14 +4,6 @@ PROMPT='%F{green}%D%f %F{green}%T%f %F{magenta}%c%f %F{green}$%f '
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(anyenv init -)"
 
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
-
-if command -v pyenv-virtualenv 1>/dev/null 2>&1; then
-  eval "$(pyenv virtualenv-init -)"
-fi
-
 # オプション設定
 set -o vi
 
@@ -30,8 +22,8 @@ alias n='cd ~ & nvim -c "Fern bookmark:///"'
 alias ls='ls -G'
 
 # 設定ファイル用コマンド
-alias re='source ~/.zshrc'
-alias mk_zsh='nvim ~/.zshrc'
+alias re='source ~/.config/zsh/.zshrc'
+alias mk_zsh='nvim ~/.config/zsh/.zshrc'
 alias mk_alias='nvim ~/.config/zsh/.zprofile'
 alias mk_n='nvim ~/.config/nvim/init.vim'
 alias karabiner="nvim ~/.config/karabiner/karabiner.json"
