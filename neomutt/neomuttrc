@@ -4,7 +4,7 @@
 #   メーラー基本設定   #
 ########################
 # サイドバーの表示
-set sidebar_visible  = yes
+# set sidebar_visible  = yes
 
 # サイドバーの書式
 set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"

@@ -60,3 +60,16 @@ function _lazydocker_toggle()
 end
 vim.api.nvim_set_keymap("n", "<C-S-d>", "<cmd>lua _lazydocker_toggle()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("t", "<C-S-d>", "<cmd>lua _lazydocker_toggle()<CR>", { noremap = true, silent = true })
+
+-- neomuttの設定
+local neomutt = Terminal:new({
+  cmd = "neomutt",
+  direction = "float",
+  hidden = true,
+  count = 9
+})
+function _neomutt_toggle()
+  neomutt:toggle()
+end
+vim.api.nvim_set_keymap("n", "<C-S-m>", "<cmd>lua _neomutt_toggle()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("t", "<C-S-m>", "<cmd>lua _neomutt_toggle()<CR>", { noremap = true, silent = true })
