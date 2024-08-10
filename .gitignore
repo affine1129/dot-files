@@ -11,3 +11,5 @@ qiita-cli/
 anyenv/
 pip/
 .venv/
+neomutt/*
+!neomutt/neomuttrc

@@ -21,6 +21,7 @@ brew install lazygit
 brew install docker
 # https://github.com/neovim/neovim?tab=readme-ov-file
 brew install neovim
+brew install neomutt
 brew install git
 brew install telnet
 
