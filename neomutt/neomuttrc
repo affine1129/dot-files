@@ -48,8 +48,13 @@ set index_format="%4C %Z %<[y?%<[d?%[%H:%M           ]&%[%m/%d (%a) %H:%M]>&%[%Y
 ##############################################################
 # キャッシュ設定(キャッシュ先ディレクトリを事前に作成する事) #
 ##############################################################
-set header_cache = "~/.mutt/cache/headers" # headerキャッシュのPATHを指定
-set message_cachedir = "~/.mutt/cache/bodies" # IMAP経由で受信したメッセージのキャッシュPATHを指定
+# headerキャッシュのPATHを指定
+set header_cache = "~/.mutt/cache/headers" 
+# IMAP経由で受信したメッセージのキャッシュPATHを指定
+set message_cachedir = "~/.mutt/cache/bodies" 
+
+# keybidings
+bind index G imap-fetch-mail
 
 ##############################################################
 # アカウント別設定
@@ -64,5 +69,5 @@ folder-hook $folder 'source ~/.neomutt/account1'
 
 # ---
 # アカウント2の設定
-# source "~/.config/neomutt/account2"
-# folder-hook account2/ 'source ~/.neomutt/account2'
+source "~/.config/neomutt/account2"
+folder-hook account2/ 'source ~/.neomutt/account2'

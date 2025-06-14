@@ -6,7 +6,8 @@
     "typescript",
     "javascript",
     "json",
-    "python"
+    "python",
+    "terraform"
   ],
   "suggest.completionItemKindLabels": {
     "function": "\uf794",
@@ -34,7 +35,6 @@
     "typeParameter": "\uf278",
     "default": "\uf29c"
   },
-  "python.pythonPath": "~/.config/.venv/bin/python",
   "python.linting.enabled": true,
   "python.linting.flake8Enabled": true,
   "python.linting.flake8Args": ["--config=tox.ini"],
@@ -43,5 +43,13 @@
   "pyright.inlayHints.variableTypes": false,
   "pyright.inlayHints.functionReturnTypes": false,
   "pyright.inlayHints.parameterTypes": false,
-  "coc.preferences.debug": true
+  "coc.preferences.debug": true,
+  "languageserver": {
+    "terraform": {
+      "command": "terraform-lsp",
+      "filetypes": ["terraform", "tf"],
+      "initializationOptions": {},
+      "settings": {}
+    }
+  }
 }

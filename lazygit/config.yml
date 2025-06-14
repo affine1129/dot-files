@@ -74,5 +74,5 @@ customCommands:
           - name: ":construction:"
             description: "(wip)🚧作業中"
             value: ":construction:"
-    command: 'bash -c ''message="{{.Form.Message}}"; emoji="{{.Form.Emoji}}"; commit_message="$emoji$message"; git commit -m "$commit_message"'''
+    command: 'bash -c ''message="{{.Form.Message}}"; emoji="{{.Form.Emoji}}"; commit_message="$emoji $message"; git commit -m "$commit_message"'''
     loadingText: "Commiting..."

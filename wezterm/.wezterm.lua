@@ -23,6 +23,12 @@ config.disable_default_key_bindings = true
 
 config.exit_behavior = "Close"
 
+-- enable IME
+config.use_ime = true
+
+-- use ctrl
+config.macos_forward_to_ime_modifier_mask = 'SHIFT|CTRL'
+
 wezterm.on('toggle-opacity', function(window, pane)
   local overrides = window:get_config_overrides() or {}
   if overrides.window_background_opacity == 1 then
