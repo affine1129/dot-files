@@ -1,11 +1,16 @@
-vim.opt.runtimepath:append("~/.cache/dein/repos/github.com/danymat/neogen")
-require('neogen').setup {
+return {
+  'danymat/neogen',
+  config = function()
+  vim.opt.runtimepath:append("~/.cache/dein/repos/github.com/danymat/neogen")
+  require('neogen').setup {
     enabled = true,
     languages = {
-        python = {
-            template = {
-                annotation_convention = "google_docstrings"
-            }
+      python = {
+        template = {
+          annotation_convention = "google_docstrings"
         }
+      }
     }
+  }
+  end
 }

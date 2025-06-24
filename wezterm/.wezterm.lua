@@ -7,7 +7,7 @@ if wezterm.config_builder then
 end
 
 -- color scheme
-config.color_scheme = 'Everforest Dark (Gogh)'
+config.color_scheme = 'Tokyo Night'
 
 -- 背景透過
 config.window_background_opacity = 1
@@ -28,6 +28,9 @@ config.use_ime = true
 
 -- use ctrl
 config.macos_forward_to_ime_modifier_mask = 'SHIFT|CTRL'
+
+-- hide tab bar
+enable_tab_bar = false,
 
 wezterm.on('toggle-opacity', function(window, pane)
   local overrides = window:get_config_overrides() or {}

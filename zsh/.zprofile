@@ -18,7 +18,7 @@ alias ...='cd ../../../'
 alias ..='cd ../../'
 alias .='cd ../'
 
-alias n='cd ~ & nvim -c "Fern bookmark:///"'
+alias n='cd ~ & nvim'
 alias ls='ls -G'
 
 # 設定ファイル用コマンド
