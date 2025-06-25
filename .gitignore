@@ -13,3 +13,4 @@ pip/
 .venv/
 neomutt/*
 !neomutt/neomuttrc
+github-copilot/
