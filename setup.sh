@@ -5,8 +5,6 @@
 
 # https://github.com/anyenv/anyenv
 brew install anyenv
-# https://github.com/pyenv/pyenv-virtualenv
-# brew install pyenv-virtualenv
 # https://github.com/BurntSushi/ripgrep
 brew install ripgrep
 # https://github.com/sharkdp/fd
@@ -37,6 +35,9 @@ brew install --cask arc
 brew install --cask raycast
 # https://formulae.brew.sh/cask/notion-calendar
 brew install --cask notion-calendar
+
+# font
+brew install --cask font-cica
 
 
 # configuration

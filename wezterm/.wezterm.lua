@@ -6,6 +6,10 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
+-- font
+config.font = wezterm.font("Cica")
+config.font_size = 14.5
+
 -- color scheme
 config.color_scheme = 'Tokyo Night'
 
@@ -28,9 +32,6 @@ config.use_ime = true
 
 -- use ctrl
 config.macos_forward_to_ime_modifier_mask = 'SHIFT|CTRL'
-
--- hide tab bar
-enable_tab_bar = false,
 
 wezterm.on('toggle-opacity', function(window, pane)
   local overrides = window:get_config_overrides() or {}
