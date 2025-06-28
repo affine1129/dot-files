@@ -55,7 +55,6 @@ return {
     'tyru/open-browser.vim',
     config = function()
       vim.g.netrw_nogx = 1  -- disable netrw's gx mapping.
-      vim.api.nvim_set_keymap('n', 'gx', '<Plug>(openbrowser-smart-search)', { noremap = false, silent = true })
     end
   },
 
@@ -84,9 +83,6 @@ return {
 
   {
     'folke/zen-mode.nvim',
-    config = function()
-      vim.keymap.set("n", "<C-z>", ":ZenMode<CR>")
-    end
   },
 
   {

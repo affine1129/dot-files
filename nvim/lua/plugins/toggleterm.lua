@@ -35,8 +35,8 @@ return {
     function _float_term_toggle()
       float_term:toggle()
     end
-    vim.api.nvim_set_keymap("n", "<C-S-f>", "<cmd>lua _float_term_toggle()<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap("t", "<C-S-f>", "<cmd>lua _float_term_toggle()<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap("n", "<leader>tt", "<cmd>lua _float_term_toggle()<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap("t", "<leader>tt", "<cmd>lua _float_term_toggle()<CR>", { noremap = true, silent = true })
 
     -- lazygitの設定
     local lazygit = Terminal:new({
@@ -48,8 +48,8 @@ return {
     function _lazygit_toggle()
       lazygit:toggle()
     end
-    vim.api.nvim_set_keymap("n", "<C-S-g>", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap("t", "<C-S-g>", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap("n", "<leader>tg", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap("t", "<leader>tg", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
 
     -- lazydockerの設定
     local lazydocker = Terminal:new({
@@ -61,8 +61,8 @@ return {
     function _lazydocker_toggle()
       lazydocker:toggle()
     end
-    vim.api.nvim_set_keymap("n", "<C-S-d>", "<cmd>lua _lazydocker_toggle()<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap("t", "<C-S-d>", "<cmd>lua _lazydocker_toggle()<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap("n", "<leader>td", "<cmd>lua _lazydocker_toggle()<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap("t", "<leader>td", "<cmd>lua _lazydocker_toggle()<CR>", { noremap = true, silent = true })
 
     -- neomuttの設定
     local neomutt = Terminal:new({
@@ -74,7 +74,7 @@ return {
     function _neomutt_toggle()
       neomutt:toggle()
     end
-    vim.api.nvim_set_keymap("n", "<C-S-m>", "<cmd>lua _neomutt_toggle()<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap("t", "<C-S-m>", "<cmd>lua _neomutt_toggle()<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap("n", "<leader>tm", "<cmd>lua _neomutt_toggle()<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap("t", "<leader>tm", "<cmd>lua _neomutt_toggle()<CR>", { noremap = true, silent = true })
   end
 }

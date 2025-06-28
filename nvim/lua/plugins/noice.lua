@@ -5,7 +5,6 @@ return {
     'rcarriga/nvim-notify'
   },
   config = function()
-    vim.keymap.set("n", ";", ":")
     require("noice").setup({
       cmdline = {
         format = {

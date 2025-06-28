@@ -14,6 +14,16 @@ local keymap = vim.api.nvim_set_keymap
 --   term_mode = 't',
 --   command_mode = 'c',
 
+-- Used Keymaps
+-- <leader>n : nx
+-- <leader>t : toggleterm
+-- <leader>f : telescope
+
+
+-- remap
+keymap("n", ";", ":", opts)
+keymap("n", "<Space><Space>", "za", opts)
+
 -- out insert mode
 keymap("i", "jj", "<ESC>", opts)
 keymap("i", "<C-j>", "j", opts)
@@ -71,3 +81,39 @@ keymap("n", "<ESC>", "", opts)
 -- split window
 keymap("n", "ss", ":split<Return><C-w>w", opts)
 keymap("n", "sv", ":vsplit<Return><C-w>w", opts)
+
+-- diffview
+keymap("n", "<leader>do", "<cmd>DiffviewOpen<CR>", opts)
+keymap("n", "<leader>dc", "<cmd>DiffviewClose<CR>", opts)
+keymap("n", "<leader>dv", "<cmd>DiffviewFileHistory %<CR>", opts)
+
+-- GitMessenger
+keymap("n", "<leader>gm", "<cmd>GitMessenger<CR>", opts)
+
+-- vim-gitgutter
+keymap("n", "g[", "<cmd>GitGutterPrevHunk<CR>", opts)
+keymap("n", "g]", "<cmd>GitGutterNextHunk<CR>", opts)
+keymap("n", "gh", "<cmd>GitGutterLineHighlightsToggle<CR>", opts)
+keymap("n", "gp", "<cmd>GitGutterPreviewHunk<CR>", opts)
+
+-- open browser
+keymap("n", "gx", "<Plug>(openbrowser-smart-search)", opts)
+
+-- zen mode
+keymap("n", "<leader>z", "<cmd>ZenMode<CR>", opts)
+
+-- nerdcommenter
+keymap("n", "<leader>cc", "<Plug>NERDCommenterToggle", opts)
+keymap("v", "<leader>cc", "<Plug>NERDCommenterToggle", opts)
+
+-- nx
+keymap("n", "<leader>ng", function()
+  require('nx.generators').generators()
+end, opts)
+keymap("n", "<leader>na", function()
+  require('nx.on-project-mod')()
+  require('nx.actions').actions_finder()
+end, opts)
+
+-- oil
+keymap("n", "<C-S-n>", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })

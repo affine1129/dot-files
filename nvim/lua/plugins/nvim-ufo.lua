@@ -36,13 +36,6 @@ return {
     require('ufo').setup({
       fold_virt_text_handler = handler
     })
-
-    -- buffer scope handler
-    -- will override global handler if it is existed
-    -- local bufnr = vim.api.nvim_get_current_buf()
-    -- require('ufo').setFoldVirtTextHandler(bufnr, handler)
-
-    vim.keymap.set('n', '<Space><Space>', 'za', {})
   end
 }
 
