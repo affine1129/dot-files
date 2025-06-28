@@ -76,5 +76,17 @@ return {
     end
     vim.api.nvim_set_keymap("n", "<leader>tm", "<cmd>lua _neomutt_toggle()<CR>", { noremap = true, silent = true })
     vim.api.nvim_set_keymap("t", "<leader>tm", "<cmd>lua _neomutt_toggle()<CR>", { noremap = true, silent = true })
+
+    local gemini = Terminal:new({
+      cmd = "gemini",
+      direction = "float",
+      hidden = true,
+      count = 10
+    })
+    function _gemini_toggle()
+      gemini:toggle()
+    end
+    vim.api.nvim_set_keymap("n", "<leader>ts", "<cmd>lua _gemini_toggle()<CR>", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap("t", "<leader>ts", "<cmd>lua _gemini_toggle()<CR>", { noremap = true, silent = true })
   end
 }

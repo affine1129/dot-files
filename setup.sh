@@ -22,6 +22,7 @@ brew install neovim
 brew install neomutt
 brew install git
 brew install telnet
+brew install gemini-cli
 
 
 # Apps

@@ -19,7 +19,6 @@ local keymap = vim.api.nvim_set_keymap
 -- <leader>t : toggleterm
 -- <leader>f : telescope
 
-
 -- remap
 keymap("n", ";", ":", opts)
 keymap("n", "<Space><Space>", "za", opts)
@@ -107,13 +106,5 @@ keymap("n", "<leader>cc", "<Plug>NERDCommenterToggle", opts)
 keymap("v", "<leader>cc", "<Plug>NERDCommenterToggle", opts)
 
 -- nx
-keymap("n", "<leader>ng", function()
-  require('nx.generators').generators()
-end, opts)
-keymap("n", "<leader>na", function()
-  require('nx.on-project-mod')()
-  require('nx.actions').actions_finder()
-end, opts)
-
 -- oil
 keymap("n", "<C-S-n>", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
