@@ -28,9 +28,9 @@ return {
     map('n', 'g]', vim.diagnostic.goto_next)
     map('n', 'g[', vim.diagnostic.goto_prev)
 
-    -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    --   vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
-    -- )
+    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+      vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
+    )
 
     local diag_augroup = vim.api.nvim_create_augroup("LspDiagnosticsOnHover", {})
     vim.api.nvim_clear_autocmds({ group = diag_augroup, buffer = bufnr })
