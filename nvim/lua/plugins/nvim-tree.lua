@@ -7,8 +7,9 @@ return {
   },
  config = function()
     require("nvim-tree").setup {
-        on_attach = function(bufnr)
+      on_attach = function(bufnr)
         local api = require("nvim-tree.api")
+        api.config.mappings.default_on_attach(bufnr)
 
         local function opts(desc)
           return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }

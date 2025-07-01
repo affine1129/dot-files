@@ -1,5 +1,8 @@
 return {
   'preservim/nerdcommenter',
+  init = function()
+    vim.g.NERDCreateDefaultMappings = 0
+  end,
   config = function()
     -- Add spaces after comment delimiters by default
     vim.g.NERDSpaceDelims = 1

@@ -82,12 +82,12 @@ keymap("n", "ss", ":split<Return><C-w>w", opts)
 keymap("n", "sv", ":vsplit<Return><C-w>w", opts)
 
 -- diffview
-keymap("n", "<leader>do", "<cmd>DiffviewOpen<CR>", opts)
-keymap("n", "<leader>dc", "<cmd>DiffviewClose<CR>", opts)
-keymap("n", "<leader>dv", "<cmd>DiffviewFileHistory %<CR>", opts)
+keymap("n", "do", "<cmd>DiffviewOpen<CR>", opts)
+keymap("n", "dc", "<cmd>DiffviewClose<CR>", opts)
+keymap("n", "dv", "<cmd>DiffviewFileHistory %<CR>", opts)
 
 -- GitMessenger
-keymap("n", "<leader>gm", "<cmd>GitMessenger<CR>", opts)
+keymap("n", "gm", "<cmd>GitMessenger<CR>", opts)
 
 -- vim-gitgutter
 keymap("n", "g[", "<cmd>GitGutterPrevHunk<CR>", opts)
@@ -102,9 +102,11 @@ keymap("n", "gx", "<Plug>(openbrowser-smart-search)", opts)
 keymap("n", "<leader>z", "<cmd>ZenMode<CR>", opts)
 
 -- nerdcommenter
-keymap("n", "<leader>cc", "<Plug>NERDCommenterToggle", opts)
-keymap("v", "<leader>cc", "<Plug>NERDCommenterToggle", opts)
+keymap("n", "co", "<Plug>NERDCommenterToggle", opts)
+keymap("v", "co", "<Plug>NERDCommenterToggle", opts)
 
--- nx
 -- oil
-keymap("n", "<C-S-n>", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
+keymap("n", "<C-S-n>", "<cmd>Oil --float<CR>", { desc = "Open parent directory" })
+
+-- notion
+keymap("n", "<leader>no", "<cmd>Notion<CR>", opts)
