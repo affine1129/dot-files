@@ -6,7 +6,8 @@ return {
       { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
     },
     build = "make tiktoken", -- Only on MacOS or Linux
-    opts = {
+    keys = {
+      { "<leader>cc", "<cmd>CopilotChat<cr>", desc = "Explain Code" }
     },
     config = function()
       require("CopilotChat").setup({
