@@ -12,6 +12,9 @@ return {
     config = function()
       require("CopilotChat").setup({
         show_help = "yes",
+        mappings = {
+          reset = false,
+        },
         prompts = {
             Explain = {
                 prompt = "/COPILOT_EXPLAIN コードを日本語で説明してください",
