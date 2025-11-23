@@ -29,7 +29,6 @@ return {
         project = {
           base_dirs = {
             { '~/.config',    max_depth = 1 },
-            { '~/Workspace/', max_depth = 3 },
           },
           hidden_files        = false,
           theme               = "dropdown",
