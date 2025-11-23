@@ -6,8 +6,12 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
+-- font
+config.font = wezterm.font("Cica")
+config.font_size = 14.5
+
 -- color scheme
-config.color_scheme = 'Everforest Dark (Gogh)'
+config.color_scheme = 'Tokyo Night'
 
 -- 背景透過
 config.window_background_opacity = 1

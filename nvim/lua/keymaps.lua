@@ -6,11 +6,6 @@ local term_opts = { silent = true }
 --local keymap = vim.keymap
 local keymap = vim.api.nvim_set_keymap
 
---Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 -- Modes
 --   normal_mode = 'n',
 --   insert_mode = 'i',
@@ -18,6 +13,15 @@ vim.g.maplocalleader = " "
 --   visual_block_mode = 'x',
 --   term_mode = 't',
 --   command_mode = 'c',
+
+-- Used Keymaps
+-- <leader>n : nx
+-- <leader>t : toggleterm
+-- <leader>f : telescope
+
+-- remap
+keymap("n", ";", ":", opts)
+keymap("n", "<Space><Space>", "za", opts)
 
 -- out insert mode
 keymap("i", "jj", "<ESC>", opts)
@@ -69,7 +73,6 @@ keymap("n", "<S-Down>", "<C-x>", opts)
 keymap("n", "<C-[>", "gT", opts)
 keymap("n", "<C-]>", "gt", opts)
 keymap("n", "<C-w><C-w>", ":tabclose<CR>", opts)
-keymap("n", "<C-t>", ":tabnew<CR>:Fern bookmark:///<CR>", opts)
 
 -- disable <ESC>
 keymap("n", "<ESC>", "", opts)
@@ -77,3 +80,33 @@ keymap("n", "<ESC>", "", opts)
 -- split window
 keymap("n", "ss", ":split<Return><C-w>w", opts)
 keymap("n", "sv", ":vsplit<Return><C-w>w", opts)
+
+-- diffview
+keymap("n", "do", "<cmd>DiffviewOpen<CR>", opts)
+keymap("n", "dc", "<cmd>DiffviewClose<CR>", opts)
+keymap("n", "dv", "<cmd>DiffviewFileHistory %<CR>", opts)
+
+-- GitMessenger
+keymap("n", "gm", "<cmd>GitMessenger<CR>", opts)
+
+-- vim-gitgutter
+keymap("n", "g[", "<cmd>GitGutterPrevHunk<CR>", opts)
+keymap("n", "g]", "<cmd>GitGutterNextHunk<CR>", opts)
+keymap("n", "gh", "<cmd>GitGutterLineHighlightsToggle<CR>", opts)
+keymap("n", "gp", "<cmd>GitGutterPreviewHunk<CR>", opts)
+
+-- open browser
+keymap("n", "gx", "<Plug>(openbrowser-smart-search)", opts)
+
+-- zen mode
+keymap("n", "<leader>z", "<cmd>ZenMode<CR>", opts)
+
+-- nerdcommenter
+keymap("n", "co", "<Plug>NERDCommenterToggle", opts)
+keymap("v", "co", "<Plug>NERDCommenterToggle", opts)
+
+-- oil
+keymap("n", "<C-S-n>", "<cmd>Oil --float<CR>", { desc = "Open parent directory" })
+
+-- notion
+keymap("n", "<leader>no", "<cmd>Notion<CR>", opts)

@@ -1,6 +1,6 @@
+require("config.lazy")
 require("base")
 require("options")
 require("keymaps")
-require("install")
 require("autocmds")
 require("colorscheme")
