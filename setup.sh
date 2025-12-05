@@ -53,3 +53,5 @@ else
   # mount for codespace
   ln -sfn /workspaces/dot-files/nvim ~/.config/nvim
 fi
+
+exec -l "$SHELL"
