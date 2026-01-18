@@ -459,10 +459,7 @@
                                         "type": "keyboard_type_if"
                                     }
                                 ],
-                                "from": {
-                                    "key_code": "close_bracket",
-                                    "modifiers": { "optional": ["control", "option", "command"] }
-                                },
+                                "from": { "key_code": "close_bracket" },
                                 "to": [{ "key_code": "backslash" }],
                                 "type": "basic"
                             }
@@ -580,7 +577,7 @@
                                 ],
                                 "from": {
                                     "key_code": "backslash",
-                                    "modifiers": { "optional": ["control", "option", "command"] }
+                                    "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
                                     {
@@ -867,12 +864,41 @@
                             "to": [{ "key_code": "right_option" }]
                         },
                         {
+                            "from": { "key_code": "caps_lock" },
+                            "to": [{ "key_code": "vk_none" }]
+                        },
+                        {
                             "from": { "key_code": "japanese_eisuu" },
                             "to": [{ "apple_vendor_top_case_key_code": "keyboard_fn" }]
                         },
                         {
                             "from": { "key_code": "japanese_kana" },
+                            "to": [{ "key_code": "right_control" }]
+                        },
+                        {
+                            "from": { "key_code": "left_control" },
                             "to": [{ "key_code": "left_command" }]
+                        },
+                        {
+                            "from": { "key_code": "right_command" },
+                            "to": [{ "key_code": "right_control" }]
+                        }
+                    ]
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 33,
+                        "vendor_id": 1278
+                    },
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "left_control" },
+                            "to": [{ "key_code": "left_command" }]
+                        },
+                        {
+                            "from": { "key_code": "right_command" },
+                            "to": [{ "key_code": "right_control" }]
                         }
                     ]
                 }
