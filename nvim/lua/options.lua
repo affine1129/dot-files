@@ -35,7 +35,11 @@ local options = {
         expandtab = true,
         tabstop = 2,
         softtabstop = 2,
-        shiftwidth = 2
+        shiftwidth = 2,
+
+        -- vsplit setting
+        splitright = true
+
 }
 
 for k, v in pairs(options) do

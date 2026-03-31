@@ -14,6 +14,7 @@ return {
       },
       sources = {
         { name = "nvim_lsp" },
+        { name = "copilot" }
       },
       mapping = cmp.mapping.preset.insert({
         ["<C-j>"] = cmp.mapping.select_prev_item(),
