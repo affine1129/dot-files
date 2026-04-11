@@ -1,60 +1,58 @@
 # dot-files
 
-個人の開発環境設定ファイル集です。macOS をメイン環境として、GitHub Codespaces でも動作するよう構成しています。
+Personal dotfiles for development environment. Primarily configured for macOS, with support for GitHub Codespaces.
 
-## 構成
+## Structure
 
-| ディレクトリ / ファイル | 内容 |
+| Directory / File | Description |
 |---|---|
-| `nvim/` | Neovim 設定（lazy.nvim によるプラグイン管理） |
-| `zsh/` | Zsh 設定（`.zshrc` / `.zprofile` / `.zenv`） |
-| `tmux/` | tmux 設定 |
-| `wezterm/` | WezTerm ターミナルエミュレータ設定 |
-| `karabiner/` | Karabiner-Elements キーボードカスタマイズ |
-| `lazygit/` | lazygit 設定 |
-| `neomutt/` | neomutt メールクライアント設定 |
-| `sh/link.sh` | シンボリックリンク作成スクリプト |
-| `setup.sh` | 環境セットアップスクリプト（Homebrew / ツールインストール） |
+| `nvim/` | Neovim config (plugin management via lazy.nvim) |
+| `zsh/` | Zsh config (`.zshrc` / `.zprofile` / `.zenv`) |
+| `tmux/` | tmux config |
+| `wezterm/` | WezTerm terminal emulator config |
+| `karabiner/` | Karabiner-Elements keyboard customization |
+| `lazygit/` | lazygit config |
+| `neomutt/` | neomutt mail client config |
+| `sh/link.sh` | Script to create symlinks |
+| `setup.sh` | Environment setup script (Homebrew / tool installation) |
 
-## セットアップ
+## Setup
 
-### 前提条件
+### Prerequisites
 
-- macOS（一部 Linux / GitHub Codespaces にも対応）
-- [Homebrew](https://brew.sh/)（`setup.sh` 内で自動インストール）
+- macOS (partial support for Linux / GitHub Codespaces)
+- [Homebrew](https://brew.sh/) (automatically installed by `setup.sh`)
 
-### インストール
+### Installation
 
 ```bash
-git clone https://github.com/affine1129/dot-files.git ~/.config
-cd ~/.config/dot-files
-bash setup.sh
+git clone https://github.com/affine1129/dot-files.git ~/.config && cd ~/.config/dot-files && bash setup.sh
 ```
 
-`setup.sh` は以下を実行します：
+`setup.sh` does the following:
 
-1. **Homebrew** のインストール
-2. CLI ツールのインストール（lazygit、lazydocker、ripgrep、fd など）
-3. macOS アプリのインストール（WezTerm、Karabiner-Elements、Arc、Raycast、Notion Calendar）
-4. フォント（Cica）のインストール
-5. `sh/link.sh` によるシンボリックリンクの作成
+1. Install **Homebrew**
+2. Install CLI tools (lazygit, lazydocker, ripgrep, fd, etc.)
+3. Install macOS apps (WezTerm, Karabiner-Elements, Arc, Raycast, Notion Calendar)
+4. Install font (Cica)
+5. Create symlinks via `sh/link.sh`
 
-> GitHub Codespaces 環境では、`nvim` 設定のみリンクされます。
+> In GitHub Codespaces, only the `nvim` config is linked.
 
-## Neovim プラグイン（主要なもの）
+## Neovim Plugins (key ones)
 
-- **[lazy.nvim](https://github.com/folke/lazy.nvim)** — プラグインマネージャー
-- **[nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)** — LSP 設定
-- **[nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)** — シンタックスハイライト
-- **[telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)** — ファジーファインダー
-- **[copilot.nvim](https://github.com/zbirenbaum/copilot.lua)** + **[CopilotChat.nvim](https://github.com/CopilotC-Nvim/CopilotChat.nvim)** — GitHub Copilot 統合
-- **[nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)** — ファイルエクスプローラー
-- **[none-ls.nvim](https://github.com/nvimtools/none-ls.nvim)** — フォーマッター / リンター
-- **[lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)** — ステータスライン
-- **[bufferline.nvim](https://github.com/akinsho/bufferline.nvim)** — バッファタブライン
-- **[toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)** — ターミナル統合
+- **[lazy.nvim](https://github.com/folke/lazy.nvim)** — Plugin manager
+- **[nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)** — LSP configuration
+- **[nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)** — Syntax highlighting
+- **[telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)** — Fuzzy finder
+- **[copilot.nvim](https://github.com/zbirenbaum/copilot.lua)** + **[CopilotChat.nvim](https://github.com/CopilotC-Nvim/CopilotChat.nvim)** — GitHub Copilot integration
+- **[nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)** — File explorer
+- **[none-ls.nvim](https://github.com/nvimtools/none-ls.nvim)** — Formatter / linter
+- **[lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)** — Status line
+- **[bufferline.nvim](https://github.com/akinsho/bufferline.nvim)** — Buffer tab line
+- **[toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)** — Terminal integration
 
-## 動作確認環境
+## 動作環境
 
 - **Node.js**: 21.4.0
 - **Python**: 3.12.1
